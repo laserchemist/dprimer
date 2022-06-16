@@ -1,6 +1,6 @@
 # Elements of Data Science Primer
 
-This Jupyter Book provides a brief primer on key topics including Python coding and statistics fundamentals
+This Jupyter Book provides a brief primer on key topics including Python coding and statistics fundamentals.
 
 ## What is Data Science?
 Data science is beyond data, it is a scientific approach to analyzing data and drawing conclusions. Data sets can be developed from scientific experimentation and surveys. Computer coding is a key tool in loading data sets, exploring them, visualizing, and analyzing.
@@ -17,8 +17,8 @@ And here is your first code block:
 
 ```
 e = mc^2
-first_string = 'Temple'
-second_string = ' is a good place to learn about science.'
+first_string = 'Data Science'
+second_string = ' is the way to apply the scientific methood to data!'
 
 ```
 

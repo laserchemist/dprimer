@@ -4,5 +4,5 @@
 format: jb-book
 root: intro
 chapters:
+- file: First
 - file: String_methods
-- file: notebooks
