@@ -10,6 +10,9 @@ And here is a code block:
 
 ```
 e = mc^2
+first_string = 'Temple'
+second_string = ' is a good place to learn about science.'
+
 ```
 
 Check out the content pages.
