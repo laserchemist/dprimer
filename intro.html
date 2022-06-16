@@ -278,12 +278,36 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-data-science">
+   What is Data Science?
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -295,6 +319,19 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-data-science">
+   What is Data Science?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -305,11 +342,16 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="elements-of-data-science-primer">
 <h1>Elements of Data Science Primer<a class="headerlink" href="#elements-of-data-science-primer" title="Permalink to this headline">#</a></h1>
 <p>This Jupyter Book provides a brief primer on key topics including Python coding and statistics fundamentals</p>
+<section id="what-is-data-science">
+<h2>What is Data Science?<a class="headerlink" href="#what-is-data-science" title="Permalink to this headline">#</a></h2>
+<p>Data science is beyond data, it is a scientific approach to analyzing data and drawing conclusions. Data sets can be developed from scientific experimentation and surveys. Computer coding is a key tool in loading data sets, exploring them, visualizing, and analyzing.</p>
+<p>In this primer the Python computer language will be used given it’s widespread use in data science and straightforward syntax.</p>
+<p>Statistics is central to data science providing a systematic framework to analyze and draw conclusions from data.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Use this as a reference!</p>
+<p>Use this primer as a reference!</p>
 </div>
-<p>And here is a code block:</p>
+<p>And here is your first code block:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">mc</span><span class="o">^</span><span class="mi">2</span>
 <span class="n">first_string</span> <span class="o">=</span> <span class="s1">&#39;Temple&#39;</span>
 <span class="n">second_string</span> <span class="o">=</span> <span class="s1">&#39; is a good place to learn about science.&#39;</span>
@@ -318,6 +360,7 @@ title="Print to PDF"
 </div>
 <p>Check out the content pages.
 Jonathan Smith</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
