@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Elements of Data Science Primer &#8212; Data Science Primer</title>
+    <title>Elements of Data Science &#8212; Data Science Primer</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="String Methods" href="String_methods.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -106,8 +105,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Elements of Data Science Primer
                 </a>
             </li>
@@ -169,6 +168,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/FirstCode.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -208,7 +236,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FFirstCode.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -236,7 +264,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="_sources/FirstCode.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -247,7 +275,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -295,9 +323,21 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-data-science">
-   What is Data Science?
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Elements of Data Science
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#our-first-jupyter-notebook">
+     Our first Jupyter notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variables">
+   Variables
   </a>
  </li>
 </ul>
@@ -309,7 +349,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Elements of Data Science Primer</h1>
+                <h1>Elements of Data Science</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -319,9 +359,21 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-data-science">
-   What is Data Science?
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Elements of Data Science
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#our-first-jupyter-notebook">
+     Our first Jupyter notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variables">
+   Variables
   </a>
  </li>
 </ul>
@@ -334,30 +386,153 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="elements-of-data-science-primer">
-<h1>Elements of Data Science Primer<a class="headerlink" href="#elements-of-data-science-primer" title="Permalink to this headline">#</a></h1>
-<p>This Jupyter Book provides a brief primer on key topics including Python coding and statistics fundamentals.</p>
-<section id="what-is-data-science">
-<h2>What is Data Science?<a class="headerlink" href="#what-is-data-science" title="Permalink to this headline">#</a></h2>
-<p>Data science is beyond data, it is a scientific approach to analyzing data and drawing conclusions. Data sets can be developed from scientific experimentation and surveys. Computer coding is a key tool in loading data sets, exploring them, visualizing, and analyzing.</p>
-<p>In this primer the Python computer language will be used given it’s widespread use in data science and straightforward syntax.</p>
-<p>Statistics is central to data science providing a systematic framework to analyze and draw conclusions from data.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Use this primer as a reference!</p>
-</div>
-<p>And here is your first code block:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">mc</span><span class="o">^</span><span class="mi">2</span>
-<span class="n">first_string</span> <span class="o">=</span> <span class="s1">&#39;Data Science&#39;</span>
-<span class="n">second_string</span> <span class="o">=</span> <span class="s1">&#39; is the way to apply the scientific methood to data!&#39;</span>
-
+  <section id="elements-of-data-science">
+<h1>Elements of Data Science<a class="headerlink" href="#elements-of-data-science" title="Permalink to this headline">#</a></h1>
+<section id="our-first-jupyter-notebook">
+<h2>Our first Jupyter notebook<a class="headerlink" href="#our-first-jupyter-notebook" title="Permalink to this headline">#</a></h2>
+<p>A Jupyter notebook contains executable computer code. We use Python as the comuputer programming language.
+Notebooks are saved on the server for editing and reuse. The code executes upon hitting “shift” + “enter/return” after editing a cell. The code is executed on a cluster in the cloud.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our first code &quot;#&quot; makes the line a comment, good to place many comments</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello Temple&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Check out the content pages.
-Jonathan Smith</p>
-</section>
-<div class="toctree-wrapper compound">
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Temple
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Same as above using a string variable</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello Temple&quot;</span> <span class="c1"># Store quoted string in variable with label &quot;text&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Temple
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Manipulations</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2021</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">year</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span>  <span class="n">b</span>
+<span class="n">year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="c1"># Value of &quot;year&quot; variable is stored for later use. </span>
+<span class="c1"># &quot;print&quot; is an example of a function which takes an argument of, in this case, &quot;year&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)</span> <span class="c1"># This print the string &#39;year&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022
+year
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple computations without variables</span>
+<span class="mi">3</span><span class="o">*</span><span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">**</span> <span class="mi">4</span> <span class="c1"># &#39;**&#39; is the power operator</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">**</span> <span class="p">(</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Using earlier defined variables</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4084441
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="variables">
+<h1>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h1>
+<p>Variables store information for later processing within computer code. We can use convenient names for our variables but no spaces! The <em>=</em> symbol is the assignment operator which assigns the value on the right to that on the left of the <em>=</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2023</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">year</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023 2013
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use a combined assignment and addition operators to add to (increment) the variable <em>year</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">+=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2033
+</pre></div>
+</div>
+</div>
+</div>
+<p>Much more to come…
+See: <a class="reference external" href="https://inferentialthinking.com/chapters/03/1/Expressions.html">https://inferentialthinking.com/chapters/03/1/Expressions.html</a></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -387,13 +562,6 @@ Jonathan Smith</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="String_methods.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">String Methods</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
