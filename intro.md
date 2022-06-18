@@ -18,7 +18,7 @@ And here is your first code block:
 ```
 e = mc^2
 first_string = 'Data Science'
-second_string = ' is the way to apply the scientific methood to data!'
+second_string = ' is the way to apply the scientific method to data!'
 
 ```
 
