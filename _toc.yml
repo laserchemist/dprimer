@@ -6,4 +6,4 @@ root: intro
 chapters:
 - file: FirstCode
 - file: String_methods
-- file: JupyterQuizTest
+- file: JupyterQuiz
