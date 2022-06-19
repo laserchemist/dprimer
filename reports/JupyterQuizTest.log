@@ -23,7 +23,7 @@ with open(git_path+"questions.json", "w") as file:
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1756/2411234397.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1950/2411234397.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0;32mwith[0m [0mopen[0m[0;34m([0m[0mgit_path[0m[0;34m+[0m[0;34m"questions.json"[0m[0;34m,[0m [0;34m"w"[0m[0;34m)[0m [0;32mas[0m [0mfile[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      2[0m      [0mjson[0m[0;34m.[0m[0mdump[0m[0;34m([0m[0mquestions[0m[0;34m,[0m [0mfile[0m[0;34m,[0m [0mindent[0m[0;34m=[0m[0;36m4[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
