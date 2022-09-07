@@ -1,0 +1,917 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tables &#8212; Data Science Primer</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Functions" href="Function_examples.html" />
+    <link rel="prev" title="String Methods" href="String_methods.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science Primer</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Elements of Data Science Primer
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="FirstCode.html">
+   Jupyter Data Science Notebook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="String_methods.html">
+   String Methods
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Tables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Function_examples.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="JupyterQuiz.html">
+   Jupyter Knowledge Check
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Tables.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTables.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Tables.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-requisit-datascience-plotting-and-plot-fixes">
+   Import requisit datascience, plotting, and plot fixes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-first-datascience-table-object-from-an-array">
+   Create a first datascience table object from an array
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#census-data-example">
+   Census data example
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tables</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-requisit-datascience-plotting-and-plot-fixes">
+   Import requisit datascience, plotting, and plot fixes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-first-datascience-table-object-from-an-array">
+   Create a first datascience table object from an array
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#census-data-example">
+   Census data example
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="tables">
+<h1>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">#</a></h1>
+<p>The datascience Table object is designed to analyze multiple data points with multiple charecteristics. One way to visualize this is to consider columns of data which contain values for each data point (row) and a typical table will have multiple columns reflecting the multiple charecteristics of each data point. Each column is also an array of values with each element representing the value for a given data point or row. The datascience Table has many methods which are summarized in the detailed <a class="reference external" href="http://data8.org/datascience/tables.html">online reference</a>. Datascience tables are closely related to the <a class="reference external" href="https://pandas.pydata.org">pandas dataframe</a> which serves as a key component of a Python data science toolbox.</p>
+<section id="import-requisit-datascience-plotting-and-plot-fixes">
+<h2>Import requisit datascience, plotting, and plot fixes<a class="headerlink" href="#import-requisit-datascience-plotting-and-plot-fixes" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datascience</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># import for plotting</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plots</span>
+<span class="n">plots</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+<span class="c1"># Fix for datascience plots</span>
+<span class="kn">import</span> <span class="nn">collections</span> <span class="k">as</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">collections.abc</span> <span class="k">as</span> <span class="nn">abc</span>
+<span class="n">collections</span><span class="o">.</span><span class="n">Iterable</span> <span class="o">=</span> <span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1814</span><span class="o">/</span><span class="mf">3627246204.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">datascience</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># import for plotting</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plots</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;datascience&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-first-datascience-table-object-from-an-array">
+<h2>Create a first datascience table object from an array<a class="headerlink" href="#create-a-first-datascience-table-object-from-an-array" title="Permalink to this headline">#</a></h2>
+<p>As an example we can create a table directly from data inserted into an array using the <code class="docutils literal notranslate"><span class="pre">with_columns</span></code> table method.</p>
+<p>T=Table().with_columns(‘Tornados’,make_array(0,0,0,1,0,0,0,1,5,1,0,0))</p>
+<p>We can create a nice month index by using the numpy arange method combined with the <code class="docutils literal notranslate"><span class="pre">with_columns</span></code> table method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Tornados</th> <th>Month</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0       </td> <td>1    </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>2    </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>3    </td>
+        </tr>
+        <tr>
+            <td>1       </td> <td>4    </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>5    </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>6    </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>7    </td>
+        </tr>
+        <tr>
+            <td>1       </td> <td>8    </td>
+        </tr>
+        <tr>
+            <td>5       </td> <td>9    </td>
+        </tr>
+        <tr>
+            <td>1       </td> <td>10   </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (2 rows omitted)</p></div></div>
+</div>
+<p>We can sort using the <code class="docutils literal notranslate"><span class="pre">sort</span></code> method and using either the column label, <code class="docutils literal notranslate"><span class="pre">'Tornadoes'</span></code> in the below case, or the column index which is the first which is inxed as the value <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Tornados</th> <th>Month</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>5       </td> <td>9    </td>
+        </tr>
+        <tr>
+            <td>1       </td> <td>4    </td>
+        </tr>
+        <tr>
+            <td>1       </td> <td>8    </td>
+        </tr>
+        <tr>
+            <td>1       </td> <td>10   </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>1    </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>2    </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>3    </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>5    </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>6    </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>7    </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (2 rows omitted)</p></div></div>
+</div>
+<p>We can also use a trick with the modulo operator, <code class="docutils literal notranslate"><span class="pre">%</span></code>, and then further apply the <code class="docutils literal notranslate"><span class="pre">where</span></code> method which filters the table to get rows that match the criteria which in this case is that the newly created column, <code class="docutils literal notranslate"><span class="pre">'Odd'</span></code> has the value <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="s2">&quot;Odd&quot;</span><span class="p">,</span><span class="n">T</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="k">2</span>).where(&quot;Odd&quot;,0)
+<span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Tornados</th> <th>Month</th> <th>Odd</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0       </td> <td>2    </td> <td>0   </td>
+        </tr>
+        <tr>
+            <td>1       </td> <td>4    </td> <td>0   </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>6    </td> <td>0   </td>
+        </tr>
+        <tr>
+            <td>1       </td> <td>8    </td> <td>0   </td>
+        </tr>
+        <tr>
+            <td>1       </td> <td>10   </td> <td>0   </td>
+        </tr>
+        <tr>
+            <td>0       </td> <td>12   </td> <td>0   </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+</section>
+<section id="census-data-example">
+<h2>Census data example<a class="headerlink" href="#census-data-example" title="Permalink to this headline">#</a></h2>
+<p>We can look at complex real world data. In this example we look at <a class="reference external" href="https://www.census.gov">US Census</a> using the datascience table <code class="docutils literal notranslate"><span class="pre">read_table</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;http://www2.census.gov/programs-surveys/popest/datasets/2010-2020/national/asrh/nc-est2020-agesex-res.csv&#39;</span>
+<span class="c1"># A local copy can be accessed here in case census.gov moves the file:</span>
+<span class="c1"># data = path_data + &#39;nc-est2015-agesex-res.csv&#39;</span>
+
+<span class="n">full_census_table</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">full_census_table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>CENSUS2010POP</th> <th>ESTIMATESBASE2010</th> <th>POPESTIMATE2010</th> <th>POPESTIMATE2011</th> <th>POPESTIMATE2012</th> <th>POPESTIMATE2013</th> <th>POPESTIMATE2014</th> <th>POPESTIMATE2015</th> <th>POPESTIMATE2016</th> <th>POPESTIMATE2017</th> <th>POPESTIMATE2018</th> <th>POPESTIMATE2019</th> <th>POPESTIMATE2020</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3944153      </td> <td>3944160          </td> <td>3951495        </td> <td>3963264        </td> <td>3926731        </td> <td>3931411        </td> <td>3954973        </td> <td>3984144        </td> <td>3963268        </td> <td>3882437        </td> <td>3826908        </td> <td>3762227        </td> <td>3735010        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>1   </td> <td>3978070      </td> <td>3978090          </td> <td>3957904        </td> <td>3966768        </td> <td>3978210        </td> <td>3943348        </td> <td>3949559        </td> <td>3973828        </td> <td>4003586        </td> <td>3981864        </td> <td>3897917        </td> <td>3842257        </td> <td>3773884        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>2   </td> <td>4096929      </td> <td>4096939          </td> <td>4090799        </td> <td>3971498        </td> <td>3980139        </td> <td>3993047        </td> <td>3960015        </td> <td>3967672        </td> <td>3992657        </td> <td>4021261        </td> <td>3996742        </td> <td>3911822        </td> <td>3853025        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>3   </td> <td>4119040      </td> <td>4119051          </td> <td>4111869        </td> <td>4102429        </td> <td>3983007        </td> <td>3992839        </td> <td>4007852        </td> <td>3976277        </td> <td>3984985        </td> <td>4009060        </td> <td>4035053        </td> <td>4009037        </td> <td>3921526        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>4   </td> <td>4063170      </td> <td>4063186          </td> <td>4077511        </td> <td>4122252        </td> <td>4112849        </td> <td>3994539        </td> <td>4006407        </td> <td>4022785        </td> <td>3992241        </td> <td>4000394        </td> <td>4021907        </td> <td>4045996        </td> <td>4017847        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>5   </td> <td>4056858      </td> <td>4056872          </td> <td>4064653        </td> <td>4087770        </td> <td>4132349        </td> <td>4123745        </td> <td>4007123        </td> <td>4020489        </td> <td>4038022        </td> <td>4007233        </td> <td>4012789        </td> <td>4032231        </td> <td>4054336        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>6   </td> <td>4066381      </td> <td>4066412          </td> <td>4073031        </td> <td>4075153        </td> <td>4097860        </td> <td>4142923        </td> <td>4135738        </td> <td>4020428        </td> <td>4034969        </td> <td>4052428        </td> <td>4019106        </td> <td>4022432        </td> <td>4040169        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>7   </td> <td>4030579      </td> <td>4030594          </td> <td>4043100        </td> <td>4083399        </td> <td>4085255        </td> <td>4108453        </td> <td>4154947        </td> <td>4148711        </td> <td>4034355        </td> <td>4048430        </td> <td>4063647        </td> <td>4027876        </td> <td>4029753        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>8   </td> <td>4046486      </td> <td>4046497          </td> <td>4025624        </td> <td>4053313        </td> <td>4093553        </td> <td>4096033        </td> <td>4120476        </td> <td>4167765        </td> <td>4162142        </td> <td>4047130        </td> <td>4059209        </td> <td>4071894        </td> <td>4034785        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>9   </td> <td>4148353      </td> <td>4148369          </td> <td>4125413        </td> <td>4035854        </td> <td>4063662        </td> <td>4104437        </td> <td>4107986        </td> <td>4133426        </td> <td>4181069        </td> <td>4175085        </td> <td>4058207        </td> <td>4067320        </td> <td>4078668        </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (296 rows omitted)</p></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">partial_census_table</span> <span class="o">=</span> <span class="n">full_census_table</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;SEX&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;POPESTIMATE2010&#39;</span><span class="p">,</span> <span class="s1">&#39;POPESTIMATE2020&#39;</span><span class="p">)</span>
+<span class="n">partial_census_table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>SEX</th> <th>AGE</th> <th>POPESTIMATE2010</th> <th>POPESTIMATE2020</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0   </td> <td>0   </td> <td>3951495        </td> <td>3735010        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>1   </td> <td>3957904        </td> <td>3773884        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>2   </td> <td>4090799        </td> <td>3853025        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>3   </td> <td>4111869        </td> <td>3921526        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>4   </td> <td>4077511        </td> <td>4017847        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>5   </td> <td>4064653        </td> <td>4054336        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>6   </td> <td>4073031        </td> <td>4040169        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>7   </td> <td>4043100        </td> <td>4029753        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>8   </td> <td>4025624        </td> <td>4034785        </td>
+        </tr>
+        <tr>
+            <td>0   </td> <td>9   </td> <td>4125413        </td> <td>4078668        </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (296 rows omitted)</p></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="o">*</span><span class="n">partial_census_table</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s2">&quot;AGE&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([   0,    3,    6,    9,   12,   15,   18,   21,   24,   27,   30,
+         33,   36,   39,   42,   45,   48,   51,   54,   57,   60,   63,
+         66,   69,   72,   75,   78,   81,   84,   87,   90,   93,   96,
+         99,  102,  105,  108,  111,  114,  117,  120,  123,  126,  129,
+        132,  135,  138,  141,  144,  147,  150,  153,  156,  159,  162,
+        165,  168,  171,  174,  177,  180,  183,  186,  189,  192,  195,
+        198,  201,  204,  207,  210,  213,  216,  219,  222,  225,  228,
+        231,  234,  237,  240,  243,  246,  249,  252,  255,  258,  261,
+        264,  267,  270,  273,  276,  279,  282,  285,  288,  291,  294,
+        297,  300, 2997,    0,    3,    6,    9,   12,   15,   18,   21,
+         24,   27,   30,   33,   36,   39,   42,   45,   48,   51,   54,
+         57,   60,   63,   66,   69,   72,   75,   78,   81,   84,   87,
+         90,   93,   96,   99,  102,  105,  108,  111,  114,  117,  120,
+        123,  126,  129,  132,  135,  138,  141,  144,  147,  150,  153,
+        156,  159,  162,  165,  168,  171,  174,  177,  180,  183,  186,
+        189,  192,  195,  198,  201,  204,  207,  210,  213,  216,  219,
+        222,  225,  228,  231,  234,  237,  240,  243,  246,  249,  252,
+        255,  258,  261,  264,  267,  270,  273,  276,  279,  282,  285,
+        288,  291,  294,  297,  300, 2997,    0,    3,    6,    9,   12,
+         15,   18,   21,   24,   27,   30,   33,   36,   39,   42,   45,
+         48,   51,   54,   57,   60,   63,   66,   69,   72,   75,   78,
+         81,   84,   87,   90,   93,   96,   99,  102,  105,  108,  111,
+        114,  117,  120,  123,  126,  129,  132,  135,  138,  141,  144,
+        147,  150,  153,  156,  159,  162,  165,  168,  171,  174,  177,
+        180,  183,  186,  189,  192,  195,  198,  201,  204,  207,  210,
+        213,  216,  219,  222,  225,  228,  231,  234,  237,  240,  243,
+        246,  249,  252,  255,  258,  261,  264,  267,  270,  273,  276,
+        279,  282,  285,  288,  291,  294,  297,  300, 2997])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">us_pop</span> <span class="o">=</span> <span class="n">partial_census_table</span><span class="o">.</span><span class="n">relabeled</span><span class="p">(</span><span class="s1">&#39;POPESTIMATE2010&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">relabeled</span><span class="p">(</span><span class="s1">&#39;POPESTIMATE2020&#39;</span><span class="p">,</span> <span class="s1">&#39;2020&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">relabeled</span><span class="p">(</span><span class="s1">&#39;SEX&#39;</span><span class="p">,</span><span class="s1">&#39;GENDER&#39;</span><span class="p">)</span>
+<span class="n">us_pop</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>GENDER</th> <th>AGE</th> <th>2010</th> <th>2020</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0     </td> <td>0   </td> <td>3951495</td> <td>3735010</td>
+        </tr>
+        <tr>
+            <td>0     </td> <td>1   </td> <td>3957904</td> <td>3773884</td>
+        </tr>
+        <tr>
+            <td>0     </td> <td>2   </td> <td>4090799</td> <td>3853025</td>
+        </tr>
+        <tr>
+            <td>0     </td> <td>3   </td> <td>4111869</td> <td>3921526</td>
+        </tr>
+        <tr>
+            <td>0     </td> <td>4   </td> <td>4077511</td> <td>4017847</td>
+        </tr>
+        <tr>
+            <td>0     </td> <td>5   </td> <td>4064653</td> <td>4054336</td>
+        </tr>
+        <tr>
+            <td>0     </td> <td>6   </td> <td>4073031</td> <td>4040169</td>
+        </tr>
+        <tr>
+            <td>0     </td> <td>7   </td> <td>4043100</td> <td>4029753</td>
+        </tr>
+        <tr>
+            <td>0     </td> <td>8   </td> <td>4025624</td> <td>4034785</td>
+        </tr>
+        <tr>
+            <td>0     </td> <td>9   </td> <td>4125413</td> <td>4078668</td>
+        </tr>
+    </tbody>
+</table>
+<p>... (296 rows omitted)</p></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">us_pop</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>datascience.tables.Table
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">us_pop</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;AGE&#39;</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>GENDER</th> <th>AGE</th> <th>2010</th> <th>2020</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0     </td> <td>80  </td> <td>1319720</td> <td>1526957</td>
+        </tr>
+        <tr>
+            <td>1     </td> <td>80  </td> <td>549205 </td> <td>663256 </td>
+        </tr>
+        <tr>
+            <td>2     </td> <td>80  </td> <td>770515 </td> <td>863701 </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">us_pop</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;AGE&#39;</span><span class="p">,</span><span class="mi">70</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>GENDER</th> <th>AGE</th> <th>2010</th> <th>2020</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0     </td> <td>70  </td> <td>2062464</td> <td>3192029</td>
+        </tr>
+        <tr>
+            <td>1     </td> <td>70  </td> <td>954009 </td> <td>1485086</td>
+        </tr>
+        <tr>
+            <td>2     </td> <td>70  </td> <td>1108455</td> <td>1706943</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="String_methods.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">String Methods</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Function_examples.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Functions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jonathan Smith<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
