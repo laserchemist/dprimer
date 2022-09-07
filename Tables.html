@@ -346,8 +346,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-requisit-datascience-plotting-and-plot-fixes">
-   Import requisit datascience, plotting, and plot fixes
+  <a class="reference internal nav-link" href="#import-requisite-modules">
+   Import requisite modules
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -380,8 +380,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-requisit-datascience-plotting-and-plot-fixes">
-   Import requisit datascience, plotting, and plot fixes
+  <a class="reference internal nav-link" href="#import-requisite-modules">
+   Import requisite modules
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -407,8 +407,9 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="tables">
 <h1>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">#</a></h1>
 <p>The datascience Table object is designed to analyze multiple data points with multiple charecteristics. One way to visualize this is to consider columns of data which contain values for each data point (row) and a typical table will have multiple columns reflecting the multiple charecteristics of each data point. Each column is also an array of values with each element representing the value for a given data point or row. The datascience Table has many methods which are summarized in the detailed <a class="reference external" href="http://data8.org/datascience/tables.html">online reference</a>. Datascience tables are closely related to the <a class="reference external" href="https://pandas.pydata.org">pandas dataframe</a> which serves as a key component of a Python data science toolbox.</p>
-<section id="import-requisit-datascience-plotting-and-plot-fixes">
-<h2>Import requisit datascience, plotting, and plot fixes<a class="headerlink" href="#import-requisit-datascience-plotting-and-plot-fixes" title="Permalink to this headline">#</a></h2>
+<section id="import-requisite-modules">
+<h2>Import requisite modules<a class="headerlink" href="#import-requisite-modules" title="Permalink to this headline">#</a></h2>
+<p>datascience, plotting, and plot fixes</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datascience</span> <span class="kn">import</span> <span class="o">*</span>
@@ -429,23 +430,18 @@ title="Print to PDF"
 <section id="create-a-first-datascience-table-object-from-an-array">
 <h2>Create a first datascience table object from an array<a class="headerlink" href="#create-a-first-datascience-table-object-from-an-array" title="Permalink to this headline">#</a></h2>
 <p>As an example we can create a table directly from data inserted into an array using the <code class="docutils literal notranslate"><span class="pre">with_columns</span></code> table method.</p>
-<p>T=Table().with_columns(‘Tornados’,make_array(0,0,0,1,0,0,0,1,5,1,0,0))</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="o">=</span><span class="n">Table</span><span class="p">()</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="s1">&#39;Tornados&#39;</span><span class="p">,</span><span class="n">make_array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>We can create a nice month index by using the numpy arange method combined with the <code class="docutils literal notranslate"><span class="pre">with_columns</span></code> table method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1844</span><span class="o">/</span><span class="mf">1580801858.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="ne">NameError</span>: name &#39;T&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -690,6 +686,7 @@ title="Print to PDF"
 </table>
 <p>... (296 rows omitted)</p></div></div>
 </div>
+<p>We can extract a column as an array using the <code class="docutils literal notranslate"><span class="pre">column()</span></code> method and even multiply by 3 in this case to get a new array</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="o">*</span><span class="n">partial_census_table</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s2">&quot;AGE&quot;</span><span class="p">)</span>
@@ -841,6 +838,17 @@ title="Print to PDF"
         </tr>
     </tbody>
 </table></div></div>
+</div>
+<p>Plot the whole population with including both genders (coded as GENDER = 0) and compare 2010 and 2020 US population as a function of age.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">us_pop</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;GENDER&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;AGE&#39;</span><span class="p">,</span><span class="s1">&#39;2010&#39;</span><span class="p">,</span><span class="s1">&#39;2020&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;AGE&#39;</span><span class="p">,</span><span class="n">are</span><span class="o">.</span><span class="n">below</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;AGE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Tables_22_0.png" src="_images/Tables_22_0.png" />
+</div>
 </div>
 </section>
 </section>
