@@ -439,7 +439,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dd4fde09df50fa0cd0f3e59a8762c2afb99487b56587baed11ce9c7cadecd20e.png" src="_images/dd4fde09df50fa0cd0f3e59a8762c2afb99487b56587baed11ce9c7cadecd20e.png" />
+<img alt="_images/17bab3b80d98b2852845be2afa26556b8970ae22637845c8c406458b41103aae.png" src="_images/17bab3b80d98b2852845be2afa26556b8970ae22637845c8c406458b41103aae.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -450,17 +450,18 @@ document.write(`
 <span class="n">inter</span> <span class="o">=</span> <span class="n">intercept</span><span class="p">(</span><span class="n">sfaithful</span><span class="p">,</span><span class="s1">&#39;duration&#39;</span><span class="p">,</span><span class="s1">&#39;wait&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slope: </span><span class="si">%4.2f</span><span class="s2"> Intercept:  </span><span class="si">%4.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">slp</span><span class="p">,</span> <span class="n">inter</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">inter</span><span class="p">)</span>
-<span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">inter</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="n">slp</span><span class="o">*</span><span class="mi">7</span><span class="o">+</span><span class="n">inter</span><span class="p">])</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="n">inter</span><span class="p">,</span> <span class="n">slp</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">+</span> <span class="n">inter</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope: 10.68 Intercept:  33.77
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope: 10.67 Intercept:  33.68
 </pre></div>
 </div>
-<img alt="_images/db310c203b2e9b1cd55b67710c4f490195ba53b18d429d6b25e238936b6b2b29.png" src="_images/db310c203b2e9b1cd55b67710c4f490195ba53b18d429d6b25e238936b6b2b29.png" />
+<img alt="_images/b6790015768e35dfc8ae16ccdd34cdb6635ba14460bfad1ba51eebe7cbdfef2e.png" src="_images/b6790015768e35dfc8ae16ccdd34cdb6635ba14460bfad1ba51eebe7cbdfef2e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -471,7 +472,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.5576049442
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.9065857631
 </pre></div>
 </div>
 </div>
@@ -495,7 +496,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 10.13688121,  11.31382557])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 10.15171504,  11.32910719])
 </pre></div>
 </div>
 </div>
@@ -523,7 +524,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.58847217772027349
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.58869607377366862
 </pre></div>
 </div>
 </div>
@@ -535,14 +536,13 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mf">10.73</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;slope&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> 
             <span class="n">c</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Confidence Interval&#39;</span><span class="p">)</span>
-<span class="c1">#plt.xlim(-80,80)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">labelspacing</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3ea8265b0e8652eca9e01d3a70969812975ce5823b41e1b2c7882b56abe2a33f.png" src="_images/3ea8265b0e8652eca9e01d3a70969812975ce5823b41e1b2c7882b56abe2a33f.png" />
+<img alt="_images/19a2e433d469e6d928bb5660c0fb748f8e8bd0155c0c7c66eb2030875c7b003f.png" src="_images/19a2e433d469e6d928bb5660c0fb748f8e8bd0155c0c7c66eb2030875c7b003f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -558,7 +558,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 31.26361771,  35.661706  ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 31.33371871,  35.64949757])
 </pre></div>
 </div>
 </div>
@@ -569,14 +569,13 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mf">33.47</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;intercept&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> 
             <span class="n">c</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Confidence Interval&#39;</span><span class="p">)</span>
-<span class="c1">#plt.xlim(30,35)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">labelspacing</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3d646783e4f6e5df23cb54a317fab0cfaaa8f9d3717c12d3087de881c74bb8bd.png" src="_images/3d646783e4f6e5df23cb54a317fab0cfaaa8f9d3717c12d3087de881c74bb8bd.png" />
+<img alt="_images/e86e917d58496a1abbfec20d03468918a2d9961e0abe0d50c7fe3885a4792ca3.png" src="_images/e86e917d58496a1abbfec20d03468918a2d9961e0abe0d50c7fe3885a4792ca3.png" />
 </div>
 </div>
 <div class="cell docutils container">
