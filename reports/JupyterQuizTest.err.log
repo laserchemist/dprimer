@@ -1,0 +1,43 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 64, in single_nb_execution
+    **kwargs,
+  File "/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/nbclient/client.py", line 664, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import json
+with open("questions.json", "r") as file:
+    questions=json.load(file)
+    
+display_quiz(questions)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+[0;32m/tmp/ipykernel_2020/1492478671.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      3[0m     [0mquestions[0m[0;34m=[0m[0mjson[0m[0;34m.[0m[0mload[0m[0;34m([0m[0mfile[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;34m[0m[0m
+[0;32m----> 5[0;31m [0mdisplay_quiz[0m[0;34m([0m[0mquestions[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/jupyterquiz/dynamic.py[0m in [0;36mdisplay_quiz[0;34m(ref, num, shuffle_questions, shuffle_answers, preserve_responses, border_radius, question_alignment, max_width, colors)[0m
+[1;32m    124[0m     [0mstyles[0m[0;34m+=[0m [0;34m"}\n\n"[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    125[0m     [0;31m#print(styles)[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 126[0;31m     [0mf[0m [0;34m=[0m [0mimportlib[0m[0;34m.[0m[0mresources[0m[0;34m.[0m[0mfiles[0m[0;34m([0m[0mpackage[0m[0;34m)[0m[0;34m.[0m[0mjoinpath[0m[0;34m([0m[0;34m'styles.css'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    127[0m     [0mcss[0m [0;34m=[0m [0mf[0m[0;34m.[0m[0mread_bytes[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    128[0m     [0mstyles[0m [0;34m+=[0m [0mcss[0m[0;34m.[0m[0mdecode[0m[0;34m([0m[0;34m"utf-8"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mAttributeError[0m: module 'importlib.resources' has no attribute 'files'
+AttributeError: module 'importlib.resources' has no attribute 'files'
+
