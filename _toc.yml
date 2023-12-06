@@ -10,3 +10,4 @@ chapters:
 - file: Function_examples
 - file: JupyterQuiz
 - file: bootstrap
+- file: string_to_number
