@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Jupyter Data Science Notebook &#8212; Data Science Primer</title>
+    <title>Data wrangling: strings to numbers &#8212; Data Science Primer</title>
   
   
   
@@ -61,11 +61,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'FirstCode';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'string_to_number';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="String Methods" href="String_methods.html" />
-    <link rel="prev" title="Elements of Data Science Primer" href="intro.html" />
+    <link rel="prev" title="Bootstrap" href="bootstrap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -157,14 +156,14 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Jupyter Data Science Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FirstCode.html">Jupyter Data Science Notebook</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="String_methods.html">String Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tables.html">Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Function_examples.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="JupyterQuiz.html">Jupyter Knowledge Check</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bootstrap.html">Bootstrap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="string_to_number.html">Data wrangling: strings to numbers</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data wrangling: strings to numbers</a></li>
 </ul>
 
     </div>
@@ -236,7 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FFirstCode.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fstring_to_number.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -266,7 +265,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/FirstCode.ipynb" target="_blank"
+      <li><a href="_sources/string_to_number.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -348,7 +347,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Jupyter Data Science Notebook</h1>
+    <h1>Data wrangling: strings to numbers</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -358,14 +357,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Jupyter Data Science Notebook</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elements-of-data-science">Elements of Data Science</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook-properties">Jupyter Notebook Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-use-with-table-columns-or-other-array-data">For use with Table columns or other array data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-time-strings">Working with time strings</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -376,157 +370,154 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="jupyter-data-science-notebook">
-<h1>Jupyter Data Science Notebook<a class="headerlink" href="#jupyter-data-science-notebook" title="Permalink to this heading">#</a></h1>
-<section id="elements-of-data-science">
-<h2>Elements of Data Science<a class="headerlink" href="#elements-of-data-science" title="Permalink to this heading">#</a></h2>
-<p>A Jupyter notebook contains executable computer code. We use Python as the computer programming language.
-Notebooks are saved on the cloud server for editing and reuse. The code executes upon hitting “shift” + “enter/return” after editing a cell. The code is executed on a cluster in the cloud.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-wrangling-strings-to-numbers">
+<h1>Data wrangling: strings to numbers<a class="headerlink" href="#data-wrangling-strings-to-numbers" title="Permalink to this heading">#</a></h1>
+<p>Many datasets have numerical values encoded in strings which need to be converted intonumbers for analysis</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;40k&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;40&#39;, &#39;&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datalist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;40k&#39;</span><span class="p">,</span> <span class="s1">&#39;31k&#39;</span><span class="p">,</span> <span class="s1">&#39;12k&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="for-use-with-table-columns-or-other-array-data">
+<h2>For use with Table columns or other array data<a class="headerlink" href="#for-use-with-table-columns-or-other-array-data" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mi">1000</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datalist</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[40000, 31000, 12000]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datascience</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="p">()</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="s1">&#39;amount&#39;</span><span class="p">,</span><span class="n">datalist</span><span class="p">)</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>index</th> <th>amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0    </td> <td>40k   </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>31k   </td>
+        </tr>
+        <tr>
+            <td>2    </td> <td>12k   </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,[</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mi">1000</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datalist</span><span class="p">])</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>index</th> <th>amount</th> <th>value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0    </td> <td>40k   </td> <td>40000</td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>31k   </td> <td>31000</td>
+        </tr>
+        <tr>
+            <td>2    </td> <td>12k   </td> <td>12000</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
 </section>
-<section id="jupyter-notebook-properties">
-<h2>Jupyter Notebook Properties<a class="headerlink" href="#jupyter-notebook-properties" title="Permalink to this heading">#</a></h2>
-<p>A Jupyter Noteboook is divided in cells which combine formatted text in markdoown cells and executable computer code in code cells. Upon executing a cell [“shift” + “enter/return”] output is displayed which contains the formatted text and/or images from markdown cells and the results/output of code execution from code cells.</p>
+<section id="working-with-time-strings">
+<h2>Working with time strings<a class="headerlink" href="#working-with-time-strings" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our first code &quot;#&quot; makes the line a comment, good to place many comments</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello Temple&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Temple
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;12:03:56&#39;</span><span class="p">,</span> <span class="s1">&#39;01:04:23&#39;</span><span class="p">,</span> <span class="s1">&#39;03:35:00&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Same as above using a string variable</span>
-<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello Temple&quot;</span> <span class="c1"># Store quoted string in variable with label &quot;text&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="n">time_values</span><span class="p">,</span><span class="s1">&#39;hour&#39;</span><span class="p">,[</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">time_values</span><span class="p">])</span>
+<span class="n">t</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Temple
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Manipulations</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mi">2021</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">year</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span>  <span class="n">b</span>
-<span class="n">year</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="c1"># Value of &quot;year&quot; variable is stored for later use. </span>
-<span class="c1"># &quot;print&quot; is an example of a function which takes an argument of, in this case, &quot;year&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)</span> <span class="c1"># This print the string &#39;year&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022
-year
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple computations without variables</span>
-<span class="mi">3</span><span class="o">*</span><span class="mi">4</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">**</span> <span class="mi">4</span> <span class="c1"># &#39;**&#39; is the power operator</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">**</span> <span class="p">(</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Using earlier defined variables</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4084441
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>index</th> <th>amount</th> <th>value</th> <th>time</th> <th>hour</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0    </td> <td>40k   </td> <td>40000</td> <td>12:03:56</td> <td>12  </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>31k   </td> <td>31000</td> <td>01:04:23</td> <td>1   </td>
+        </tr>
+        <tr>
+            <td>2    </td> <td>12k   </td> <td>12000</td> <td>03:35:00</td> <td>3   </td>
+        </tr>
+    </tbody>
+</table></div></div>
 </div>
 </section>
-</section>
-<section id="variables">
-<h1>Variables<a class="headerlink" href="#variables" title="Permalink to this heading">#</a></h1>
-<p>Variables store information for later processing within computer code. We can use convenient names for our variables but no spaces! The <em>=</em> symbol is the assignment operator which assigns the value on the right to that on the left of the <em>=</em>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2023</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">year</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023 2013
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can use a combined assignment and addition operators to add to (increment) the variable <em>year</em>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">+=</span> <span class="mi">10</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2033
-</pre></div>
-</div>
-</div>
-</div>
-<p>Much more to come…
-See: <a class="reference external" href="https://inferentialthinking.com/chapters/03/1/Expressions.html">https://inferentialthinking.com/chapters/03/1/Expressions.html</a></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -561,22 +552,13 @@ See: <a class="reference external" href="https://inferentialthinking.com/chapter
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="bootstrap.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Elements of Data Science Primer</p>
+        <p class="prev-next-title">Bootstrap</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="String_methods.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">String Methods</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
@@ -596,14 +578,9 @@ See: <a class="reference external" href="https://inferentialthinking.com/chapter
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Jupyter Data Science Notebook</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elements-of-data-science">Elements of Data Science</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook-properties">Jupyter Notebook Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-use-with-table-columns-or-other-array-data">For use with Table columns or other array data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-time-strings">Working with time strings</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
