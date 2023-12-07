@@ -357,7 +357,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-use-with-table-columns-or-other-array-data">For use with Table columns or other array data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-use-with-table-columns-or-other-array-data">For use with Table columns or other array data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#float-data-embeded-in-string-within-table">Float data embeded in string within table</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-time-strings">Working with time strings</a></li>
 </ul>
             </nav>
@@ -480,6 +483,28 @@ document.write(`
     </tbody>
 </table></div></div>
 </div>
+<section id="float-data-embeded-in-string-within-table">
+<h3>Float data embeded in string within table<a class="headerlink" href="#float-data-embeded-in-string-within-table" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datalist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;4.01k&#39;</span><span class="p">,</span> <span class="s1">&#39;3.11k&#39;</span><span class="p">,</span> <span class="s1">&#39;1.25k&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mi">1000</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datalist</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4010.0, 3110.0, 1250.0]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="working-with-time-strings">
 <h2>Working with time strings<a class="headerlink" href="#working-with-time-strings" title="Permalink to this heading">#</a></h2>
@@ -578,7 +603,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-use-with-table-columns-or-other-array-data">For use with Table columns or other array data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-use-with-table-columns-or-other-array-data">For use with Table columns or other array data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#float-data-embeded-in-string-within-table">Float data embeded in string within table</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-time-strings">Working with time strings</a></li>
 </ul>
   </nav></div>
