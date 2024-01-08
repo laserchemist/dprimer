@@ -8,6 +8,5 @@ chapters:
 - file: String_methods
 - file: Tables
 - file: Function_examples
-- file: JupyterQuiz
 - file: bootstrap
 - file: string_to_number
