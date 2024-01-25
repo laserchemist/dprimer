@@ -6,6 +6,8 @@ root: intro
 chapters:
 - file: FirstCode
 - file: String_methods
+- file: lists
+- file: arrays
 - file: Tables
 - file: Function_examples
 - file: bootstrap
