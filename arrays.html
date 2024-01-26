@@ -359,6 +359,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-elements-of-an-array">Accessing elements of an array</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#np-arange"><code class="docutils literal notranslate"><span class="pre">np.arange()</span></code></a></li>
 </ul>
             </nav>
@@ -415,6 +416,99 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="accessing-elements-of-an-array">
+<h2>Accessing elements of an array<a class="headerlink" href="#accessing-elements-of-an-array" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">firstarray</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3, 4])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now to access an individual element (value) we can use an index where the first element is zero as demonstrated below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">firstarray</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also slice the array using ranges of indices such as <code class="docutils literal notranslate"><span class="pre">firstarray[1:3]</span></code> which takes the 2nd amd 3rd but not 4th element</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">firstarray</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interesting_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">e</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">21.5</span><span class="p">,</span><span class="o">-</span><span class="mf">4.4</span><span class="p">,</span><span class="mi">19</span><span class="p">)])</span>
+<span class="n">interesting_array</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.        , -1.        ,  3.14159265,  2.71828183, 21.5       ])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interesting_array</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.14159265, 2.71828183])
+</pre></div>
+</div>
+</div>
+</div>
+<p>A blank after the colon includes everything to the end or begining of the array</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rightofarray</span> <span class="o">=</span> <span class="n">interesting_array</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="n">rightofarray</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 3.14159265,  2.71828183, 21.5       ])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leftofarray</span> <span class="o">=</span> <span class="n">interesting_array</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">leftofarray</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1., -1.])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="np-arange">
 <h2><code class="docutils literal notranslate"><span class="pre">np.arange()</span></code><a class="headerlink" href="#np-arange" title="Permalink to this heading">#</a></h2>
 <p>A very powerful way to create custom arrays is <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> which takes up to three arguments, <code class="docutils literal notranslate"><span class="pre">np.arange(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code>, where the defaults for <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">step</span></code> are 0 and 1 by default.</p>
@@ -494,7 +588,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">UFuncTypeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2067</span><span class="o">/</span><span class="mf">2127543694.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2017</span><span class="o">/</span><span class="mf">2127543694.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;one&quot;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># Causes an error</span>
 
 <span class="ne">UFuncTypeError</span>: ufunc &#39;multiply&#39; did not contain a loop with signature matching types (dtype(&#39;int64&#39;), dtype(&#39;&lt;U21&#39;)) -&gt; None
@@ -585,6 +679,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-elements-of-an-array">Accessing elements of an array</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#np-arange"><code class="docutils literal notranslate"><span class="pre">np.arange()</span></code></a></li>
 </ul>
   </nav></div>
