@@ -61,8 +61,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'k-Nearest_Neighbors_classification';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -417,32 +415,25 @@ document.write(`
 <p>The training examines the characteristics of <em>k</em> nearest neighbors to the data point for which a prediction will be made. Nearness is measured using several different <a class="reference external" href="https://www.nhm.uio.no/english/research/infrastructure/past/help/similarity.html">metrics</a> with Euclidean distance being a common one for numerical attributes.<br />
 Euclidean distance:<br />
 1-D:
-$<span class="math notranslate nohighlight">\( 
-d(p,q) = \sqrt{(p-q)^{2}} 
+\begin{align}
+d(p,q) = \sqrt{(p-q)^{2}}
 \label{eq:distance_1D} \tag{1}
-\)</span><span class="math notranslate nohighlight">\(   
- 2-D: 
- \)</span><span class="math notranslate nohighlight">\( 
- d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}} 
- \label{eq:distance_2D} \tag{2}
- \)</span>$</p>
+\end{align}
+2-D:
+\begin{align}
+d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}}
+\label{eq:distance_2D} \tag{2}
+\end{align}</p>
 <p>For multiple points (rows, multidimensional):
-$<span class="math notranslate nohighlight">\( 
- d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}} 
-  \label{eq:distance_multiD} \tag{3}
- \)</span>$</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">datascience</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+\begin{align}
+d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}}
+\label{eq:distance_multiD} \tag{3}
+\end{align}</p>
+<p>import numpy as np
+from datascience import *
+import matplotlib</p>
+<p>import matplotlib.pyplot as plt
+plt.style.use(‘ggplot’)</p>
 <section id="distance-function-inpired-from-above">
 <h3>Distance function inpired from above<a class="headerlink" href="#distance-function-inpired-from-above" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -551,46 +542,16 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table border="1" class="dataframe">
-    <thead>
-        <tr>
-            <th>Age</th> <th>Blood Pressure</th> <th>Specific Gravity</th> <th>Albumin</th> <th>Sugar</th> <th>Red Blood Cells</th> <th>Pus Cell</th> <th>Pus Cell clumps</th> <th>Bacteria</th> <th>Blood Glucose Random</th> <th>Blood Urea</th> <th>Serum Creatinine</th> <th>Sodium</th> <th>Potassium</th> <th>Hemoglobin</th> <th>Packed Cell Volume</th> <th>White Blood Cell Count</th> <th>Red Blood Cell Count</th> <th>Hypertension</th> <th>Diabetes Mellitus</th> <th>Coronary Artery Disease</th> <th>Appetite</th> <th>Pedal Edema</th> <th>Anemia</th> <th>Class</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>48  </td> <td>70            </td> <td>1.005           </td> <td>4      </td> <td>0    </td> <td>normal         </td> <td>abnormal</td> <td>present        </td> <td>notpresent</td> <td>117                 </td> <td>56        </td> <td>3.8             </td> <td>111   </td> <td>2.5      </td> <td>11.2      </td> <td>32                </td> <td>6700                  </td> <td>3.9                 </td> <td>yes         </td> <td>no               </td> <td>no                     </td> <td>poor    </td> <td>yes        </td> <td>yes   </td> <td>1    </td>
-        </tr>
-        <tr>
-            <td>53  </td> <td>90            </td> <td>1.02            </td> <td>2      </td> <td>0    </td> <td>abnormal       </td> <td>abnormal</td> <td>present        </td> <td>notpresent</td> <td>70                  </td> <td>107       </td> <td>7.2             </td> <td>114   </td> <td>3.7      </td> <td>9.5       </td> <td>29                </td> <td>12100                 </td> <td>3.7                 </td> <td>yes         </td> <td>yes              </td> <td>no                     </td> <td>poor    </td> <td>no         </td> <td>yes   </td> <td>1    </td>
-        </tr>
-        <tr>
-            <td>63  </td> <td>70            </td> <td>1.01            </td> <td>3      </td> <td>0    </td> <td>abnormal       </td> <td>abnormal</td> <td>present        </td> <td>notpresent</td> <td>380                 </td> <td>60        </td> <td>2.7             </td> <td>131   </td> <td>4.2      </td> <td>10.8      </td> <td>32                </td> <td>4500                  </td> <td>3.8                 </td> <td>yes         </td> <td>yes              </td> <td>no                     </td> <td>poor    </td> <td>yes        </td> <td>no    </td> <td>1    </td>
-        </tr>
-        <tr>
-            <td>68  </td> <td>80            </td> <td>1.01            </td> <td>3      </td> <td>2    </td> <td>normal         </td> <td>abnormal</td> <td>present        </td> <td>present   </td> <td>157                 </td> <td>90        </td> <td>4.1             </td> <td>130   </td> <td>6.4      </td> <td>5.6       </td> <td>16                </td> <td>11000                 </td> <td>2.6                 </td> <td>yes         </td> <td>yes              </td> <td>yes                    </td> <td>poor    </td> <td>yes        </td> <td>no    </td> <td>1    </td>
-        </tr>
-        <tr>
-            <td>61  </td> <td>80            </td> <td>1.015           </td> <td>2      </td> <td>0    </td> <td>abnormal       </td> <td>abnormal</td> <td>notpresent     </td> <td>notpresent</td> <td>173                 </td> <td>148       </td> <td>3.9             </td> <td>135   </td> <td>5.2      </td> <td>7.7       </td> <td>24                </td> <td>9200                  </td> <td>3.2                 </td> <td>yes         </td> <td>yes              </td> <td>yes                    </td> <td>poor    </td> <td>yes        </td> <td>yes   </td> <td>1    </td>
-        </tr>
-        <tr>
-            <td>48  </td> <td>80            </td> <td>1.025           </td> <td>4      </td> <td>0    </td> <td>normal         </td> <td>abnormal</td> <td>notpresent     </td> <td>notpresent</td> <td>95                  </td> <td>163       </td> <td>7.7             </td> <td>136   </td> <td>3.8      </td> <td>9.8       </td> <td>32                </td> <td>6900                  </td> <td>3.4                 </td> <td>yes         </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>yes   </td> <td>1    </td>
-        </tr>
-        <tr>
-            <td>69  </td> <td>70            </td> <td>1.01            </td> <td>3      </td> <td>4    </td> <td>normal         </td> <td>abnormal</td> <td>notpresent     </td> <td>notpresent</td> <td>264                 </td> <td>87        </td> <td>2.7             </td> <td>130   </td> <td>4        </td> <td>12.5      </td> <td>37                </td> <td>9600                  </td> <td>4.1                 </td> <td>yes         </td> <td>yes              </td> <td>yes                    </td> <td>good    </td> <td>yes        </td> <td>no    </td> <td>1    </td>
-        </tr>
-        <tr>
-            <td>73  </td> <td>70            </td> <td>1.005           </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>70                  </td> <td>32        </td> <td>0.9             </td> <td>125   </td> <td>4        </td> <td>10        </td> <td>29                </td> <td>18900                 </td> <td>3.5                 </td> <td>yes         </td> <td>yes              </td> <td>no                     </td> <td>good    </td> <td>yes        </td> <td>no    </td> <td>1    </td>
-        </tr>
-        <tr>
-            <td>73  </td> <td>80            </td> <td>1.02            </td> <td>2      </td> <td>0    </td> <td>abnormal       </td> <td>abnormal</td> <td>notpresent     </td> <td>notpresent</td> <td>253                 </td> <td>142       </td> <td>4.6             </td> <td>138   </td> <td>5.8      </td> <td>10.5      </td> <td>33                </td> <td>7200                  </td> <td>4.3                 </td> <td>yes         </td> <td>yes              </td> <td>yes                    </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>1    </td>
-        </tr>
-        <tr>
-            <td>46  </td> <td>60            </td> <td>1.01            </td> <td>1      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>163                 </td> <td>92        </td> <td>3.3             </td> <td>141   </td> <td>4        </td> <td>9.8       </td> <td>28                </td> <td>14600                 </td> <td>3.2                 </td> <td>yes         </td> <td>yes              </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>1    </td>
-        </tr>
-    </tbody>
-</table>
-<p>... (148 rows omitted)</p></div></div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2153</span><span class="o">/</span><span class="mf">4237366297.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">CKD</span><span class="o">=</span><span class="n">Table</span><span class="p">()</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;data/ckd.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">CKD</span>
+
+<span class="ne">NameError</span>: name &#39;Table&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <section id="define-target-and-features">
 <h3>Define target and features<a class="headerlink" href="#define-target-and-features" title="Permalink to this heading">#</a></h3>
@@ -694,13 +655,13 @@ Standardizing:  Serum Creatinine
     </thead>
     <tbody>
         <tr>
-            <td>73  </td> <td>100           </td> <td>1.01            </td> <td>3      </td> <td>2    </td> <td>abnormal       </td> <td>abnormal</td> <td>present        </td> <td>notpresent</td> <td>295                 </td> <td>90        </td> <td>5.6             </td> <td>140   </td> <td>2.9      </td> <td>9.2       </td> <td>30                </td> <td>7000                  </td> <td>3.2                 </td> <td>yes         </td> <td>yes              </td> <td>yes                    </td> <td>poor    </td> <td>no         </td> <td>no    </td> <td>1    </td>
+            <td>55  </td> <td>80            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>104                 </td> <td>28        </td> <td>0.9             </td> <td>142   </td> <td>4.8      </td> <td>17.3      </td> <td>52                </td> <td>8200                  </td> <td>4.8                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
+        </tr>
+        <tr>
+            <td>23  </td> <td>60            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>95                  </td> <td>24        </td> <td>0.8             </td> <td>145   </td> <td>5        </td> <td>15        </td> <td>52                </td> <td>6300                  </td> <td>4.6                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
         </tr>
         <tr>
             <td>57  </td> <td>60            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>105                 </td> <td>49        </td> <td>1.2             </td> <td>150   </td> <td>4.7      </td> <td>15.7      </td> <td>44                </td> <td>10400                 </td> <td>6.2                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
-        </tr>
-        <tr>
-            <td>44  </td> <td>60            </td> <td>1.025           </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>96                  </td> <td>33        </td> <td>0.9             </td> <td>147   </td> <td>4.5      </td> <td>16.9      </td> <td>41                </td> <td>7200                  </td> <td>5                   </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
         </tr>
     </tbody>
 </table>
@@ -714,7 +675,7 @@ Standardizing:  Serum Creatinine
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicting target value, Class, for row = 16 using k=8 with features: [&#39;Blood Pressure&#39;, &#39;Blood Glucose Random&#39;, &#39;Hemoglobin&#39;, &#39;Serum Creatinine&#39;]
-Actual classification: 1
+Actual classification: 0
 Predicted classification: 0
 Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
 </pre></div>
@@ -737,7 +698,7 @@ Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 90.3%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 83.9%
 </pre></div>
 </div>
 </div>
@@ -840,13 +801,13 @@ Standardizing:  Serum Creatinine
     </thead>
     <tbody>
         <tr>
-            <td>60  </td> <td>80            </td> <td>1.025           </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>81                  </td> <td>15        </td> <td>0.5             </td> <td>141   </td> <td>3.6      </td> <td>15        </td> <td>46                </td> <td>10500                 </td> <td>5.3                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
+            <td>37  </td> <td>60            </td> <td>1.025           </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>111                 </td> <td>35        </td> <td>0.8             </td> <td>135   </td> <td>4.1      </td> <td>16.2      </td> <td>50                </td> <td>5500                  </td> <td>5.7                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
         </tr>
         <tr>
-            <td>56  </td> <td>70            </td> <td>1.015           </td> <td>4      </td> <td>1    </td> <td>abnormal       </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>210                 </td> <td>26        </td> <td>1.7             </td> <td>136   </td> <td>3.8      </td> <td>16.1      </td> <td>52                </td> <td>12500                 </td> <td>5.6                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>1    </td>
+            <td>57  </td> <td>80            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>133                 </td> <td>48        </td> <td>1.2             </td> <td>147   </td> <td>4.3      </td> <td>14.8      </td> <td>46                </td> <td>6600                  </td> <td>5.5                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
         </tr>
         <tr>
-            <td>70  </td> <td>100           </td> <td>1.015           </td> <td>4      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>118                 </td> <td>125       </td> <td>5.3             </td> <td>136   </td> <td>4.9      </td> <td>12        </td> <td>37                </td> <td>8400                  </td> <td>8                   </td> <td>yes         </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>1    </td>
+            <td>59  </td> <td>70            </td> <td>1.01            </td> <td>3      </td> <td>0    </td> <td>normal         </td> <td>abnormal</td> <td>notpresent     </td> <td>notpresent</td> <td>76                  </td> <td>186       </td> <td>15              </td> <td>135   </td> <td>7.6      </td> <td>7.1       </td> <td>22                </td> <td>3800                  </td> <td>2.1                 </td> <td>yes         </td> <td>no               </td> <td>no                     </td> <td>poor    </td> <td>yes        </td> <td>yes   </td> <td>1    </td>
         </tr>
     </tbody>
 </table>
@@ -866,7 +827,7 @@ Standardizing:  Serum Creatinine
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 77.4%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 90.3%
 </pre></div>
 </div>
 </div>
