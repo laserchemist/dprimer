@@ -26,7 +26,7 @@ display_quiz(questions)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mAttributeError[0m                            Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1862/1492478671.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1868/1492478671.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      3[0m     [0mquestions[0m[0;34m=[0m[0mjson[0m[0;34m.[0m[0mload[0m[0;34m([0m[0mfile[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      4[0m [0;34m[0m[0m
 [0;32m----> 5[0;31m [0mdisplay_quiz[0m[0;34m([0m[0mquestions[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
