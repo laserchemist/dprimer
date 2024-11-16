@@ -1,0 +1,1010 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Nearest Neighbor Classification &#8212; Data Science Primer</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'kNN_classification';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data wrangling: strings to numbers" href="string_to_number.html" />
+    <link rel="prev" title="Bootstrap" href="bootstrap.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Elements of Data Science Primer
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="FirstCode.html">Jupyter Data Science Notebook</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="String_methods.html">String Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tables.html">Tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Function_examples.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bootstrap.html">Bootstrap</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Nearest Neighbor Classification</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="string_to_number.html">Data wrangling: strings to numbers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FkNN_classification.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/kNN_classification.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Nearest Neighbor Classification</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Nearest Neighbor Classification</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-from-training-data">Learning from training data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbor">k nearest neighbor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbor-concept-a-id-nnconcept-a">Nearest neighbor concept<a id="NNconcept"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-function-inpired-from-above">Distance function inpired from above</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbor-functions">Nearest neighbor Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-functions">Prediction Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-functions">Regression Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-brown-classification-example"><font color="brown">Classification example</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-target-and-features">Define target and features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize">Standardize</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">Train, test split</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-prediction-accuracy-using-specified-features">Test prediction accuracy using specified features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-additional-features">Add additional features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Test prediction accuracy using specified features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="nearest-neighbor-classification">
+<h1>Nearest Neighbor Classification<a class="headerlink" href="#nearest-neighbor-classification" title="Permalink to this heading">#</a></h1>
+<div class="alert alert-info">
+  <strong>Nearest neighbor</strong>
+</div></section>
+<section id="learning-from-training-data">
+<h1>Learning from training data<a class="headerlink" href="#learning-from-training-data" title="Permalink to this heading">#</a></h1>
+<p>A key concept in machine learning is using a subset of a dataset to train an algorithm to make estimates on a separate set of test data. The quality of the machine learning and algorithm can be assesed based on the accuracy of the predictions made on test data. Many times there are also parameters sometimes termed hyper-parameters which can be optimized through an iterative approach on test or validation data. In practice a dataset is randomly split into training and test sets using sampling.</p>
+<section id="k-nearest-neighbor">
+<h2>k nearest neighbor<a class="headerlink" href="#k-nearest-neighbor" title="Permalink to this heading">#</a></h2>
+<p>We will examine one machine learning algorithm in the laboratory, k nearest neighbor. Many of the concepts are applicable to the broad range of machine learning algorithms available.</p>
+</section>
+<section id="nearest-neighbor-concept-a-id-nnconcept-a">
+<h2>Nearest neighbor concept<a id='NNconcept'></a><a class="headerlink" href="#nearest-neighbor-concept-a-id-nnconcept-a" title="Permalink to this heading">#</a></h2>
+<p>The training examines the characteristics of <em>k</em> nearest neighbors to the data point for which a prediction will be made. Nearness is measured using several different <a class="reference external" href="https://www.nhm.uio.no/english/research/infrastructure/past/help/similarity.html">metrics</a> with Euclidean distance being a common one for numerical attributes.<br />
+Euclidean distance:<br />
+1-D: $<span class="math notranslate nohighlight">\( d(p,q) = \sqrt{(p-q)^{2}} \)</span><span class="math notranslate nohighlight">\(   
+ 2-D: \)</span><span class="math notranslate nohighlight">\( d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}} \)</span>$</p>
+<p>For multiple points (rows, multidimensional):
+$<span class="math notranslate nohighlight">\( d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}} \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">datascience</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="distance-function-inpired-from-above">
+<h3>Distance function inpired from above<a class="headerlink" href="#distance-function-inpired-from-above" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">pt1</span><span class="p">,</span> <span class="n">pt2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The distance between two points, represented as arrays.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">pt2</span><span class="o">-</span><span class="n">pt1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="nearest-neighbor-functions">
+<h2>Nearest neighbor Functions<a class="headerlink" href="#nearest-neighbor-functions" title="Permalink to this heading">#</a></h2>
+<p>These cells create the complete algorithm and use as part of a nearest neighbor toolbox</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">row_distance</span><span class="p">(</span><span class="n">row1</span><span class="p">,</span> <span class="n">row2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The distance between two rows of a table.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">distance</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">row1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">row2</span><span class="p">))</span> <span class="c1"># Need to convert rows into arrays</span>
+
+<span class="k">def</span> <span class="nf">distances</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the distance from test for each row in training.&quot;&quot;&quot;</span>
+    <span class="n">dists</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">attributes</span> <span class="o">=</span> <span class="n">training</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">attributes</span><span class="o">.</span><span class="n">rows</span><span class="p">:</span>
+        <span class="n">dists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row_distance</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">training</span><span class="o">.</span><span class="n">with_column</span><span class="p">(</span><span class="s1">&#39;Distance&#39;</span><span class="p">,</span> <span class="n">dists</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">closest</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a table of the k closest neighbors to example row from test data.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">distances</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;Distance&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prediction-functions">
+<h2>Prediction Functions<a class="headerlink" href="#prediction-functions" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict_knn</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the predicting value or class among the </span>
+<span class="sd">     k nearest neighbors, pr=1 prints&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">pr</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Predicting target value, </span><span class="si">{</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">, for row = </span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s1"> using k=</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1"> with features: </span><span class="si">{</span><span class="n">features</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">closest</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">features</span><span class="p">)</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">k</span> <span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict_knn_class</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the predicting value or class among the </span>
+<span class="sd">     k nearest neighbors, pr=1 prints&quot;&quot;&quot;</span>
+    <span class="n">closestclass</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">closest</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">features</span><span class="p">)</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">k</span> <span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">if</span> <span class="n">pr</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Predicting target value, </span><span class="si">{</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">, for row = </span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s1"> using k=</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1"> with features: </span><span class="si">{</span><span class="n">features</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Actual classification: </span><span class="si">{</span><span class="n">test</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">row</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Predicted classification: </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">closestclass</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="o">=</span><span class="n">closestclass</span><span class="o">.</span><span class="n">count</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Closest classifications: </span><span class="si">{</span><span class="n">closestclass</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">closestclass</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">closestclass</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="regression-functions">
+<h2>Regression Functions<a class="headerlink" href="#regression-functions" title="Permalink to this heading">#</a></h2>
+<p>Use as part of a toolbox for later analysis and the project</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">standard_units</span><span class="p">(</span><span class="n">any_array</span><span class="p">):</span>
+    <span class="s2">&quot;Convert any array of numbers to standard units.&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">any_array</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">any_array</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">any_array</span><span class="p">)</span>  
+    
+<span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">label_x</span><span class="p">,</span> <span class="n">label_y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the correlation between two variables from a Table with column label_x and label_y..&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">standard_units</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">label_x</span><span class="p">))</span><span class="o">*</span><span class="n">standard_units</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">label_y</span><span class="p">)))</span>
+
+<span class="k">def</span> <span class="nf">slope</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">label_x</span><span class="p">,</span> <span class="n">label_y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the slope between two variables from a Table with column label_x and label_y.&quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">correlation</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">label_x</span><span class="p">,</span> <span class="n">label_y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">r</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">label_y</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">label_x</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">intercept</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">label_x</span><span class="p">,</span> <span class="n">label_y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the slope between two variables from a Table with column label_x and label_y.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">label_y</span><span class="p">))</span> <span class="o">-</span> <span class="n">slope</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">label_x</span><span class="p">,</span> <span class="n">label_y</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">label_x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+</section>
+<hr class="docutils" />
+<section id="font-color-brown-classification-example">
+<h2><font color='brown'>Classification example<a class="headerlink" href="#font-color-brown-classification-example" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CKD</span><span class="o">=</span><span class="n">Table</span><span class="p">()</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;data/ckd.csv&#39;</span><span class="p">)</span>
+<span class="n">CKD</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Age</th> <th>Blood Pressure</th> <th>Specific Gravity</th> <th>Albumin</th> <th>Sugar</th> <th>Red Blood Cells</th> <th>Pus Cell</th> <th>Pus Cell clumps</th> <th>Bacteria</th> <th>Blood Glucose Random</th> <th>Blood Urea</th> <th>Serum Creatinine</th> <th>Sodium</th> <th>Potassium</th> <th>Hemoglobin</th> <th>Packed Cell Volume</th> <th>White Blood Cell Count</th> <th>Red Blood Cell Count</th> <th>Hypertension</th> <th>Diabetes Mellitus</th> <th>Coronary Artery Disease</th> <th>Appetite</th> <th>Pedal Edema</th> <th>Anemia</th> <th>Class</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>48  </td> <td>70            </td> <td>1.005           </td> <td>4      </td> <td>0    </td> <td>normal         </td> <td>abnormal</td> <td>present        </td> <td>notpresent</td> <td>117                 </td> <td>56        </td> <td>3.8             </td> <td>111   </td> <td>2.5      </td> <td>11.2      </td> <td>32                </td> <td>6700                  </td> <td>3.9                 </td> <td>yes         </td> <td>no               </td> <td>no                     </td> <td>poor    </td> <td>yes        </td> <td>yes   </td> <td>1    </td>
+        </tr>
+        <tr>
+            <td>53  </td> <td>90            </td> <td>1.02            </td> <td>2      </td> <td>0    </td> <td>abnormal       </td> <td>abnormal</td> <td>present        </td> <td>notpresent</td> <td>70                  </td> <td>107       </td> <td>7.2             </td> <td>114   </td> <td>3.7      </td> <td>9.5       </td> <td>29                </td> <td>12100                 </td> <td>3.7                 </td> <td>yes         </td> <td>yes              </td> <td>no                     </td> <td>poor    </td> <td>no         </td> <td>yes   </td> <td>1    </td>
+        </tr>
+        <tr>
+            <td>63  </td> <td>70            </td> <td>1.01            </td> <td>3      </td> <td>0    </td> <td>abnormal       </td> <td>abnormal</td> <td>present        </td> <td>notpresent</td> <td>380                 </td> <td>60        </td> <td>2.7             </td> <td>131   </td> <td>4.2      </td> <td>10.8      </td> <td>32                </td> <td>4500                  </td> <td>3.8                 </td> <td>yes         </td> <td>yes              </td> <td>no                     </td> <td>poor    </td> <td>yes        </td> <td>no    </td> <td>1    </td>
+        </tr>
+        <tr>
+            <td>68  </td> <td>80            </td> <td>1.01            </td> <td>3      </td> <td>2    </td> <td>normal         </td> <td>abnormal</td> <td>present        </td> <td>present   </td> <td>157                 </td> <td>90        </td> <td>4.1             </td> <td>130   </td> <td>6.4      </td> <td>5.6       </td> <td>16                </td> <td>11000                 </td> <td>2.6                 </td> <td>yes         </td> <td>yes              </td> <td>yes                    </td> <td>poor    </td> <td>yes        </td> <td>no    </td> <td>1    </td>
+        </tr>
+        <tr>
+            <td>61  </td> <td>80            </td> <td>1.015           </td> <td>2      </td> <td>0    </td> <td>abnormal       </td> <td>abnormal</td> <td>notpresent     </td> <td>notpresent</td> <td>173                 </td> <td>148       </td> <td>3.9             </td> <td>135   </td> <td>5.2      </td> <td>7.7       </td> <td>24                </td> <td>9200                  </td> <td>3.2                 </td> <td>yes         </td> <td>yes              </td> <td>yes                    </td> <td>poor    </td> <td>yes        </td> <td>yes   </td> <td>1    </td>
+        </tr>
+        <tr>
+            <td>48  </td> <td>80            </td> <td>1.025           </td> <td>4      </td> <td>0    </td> <td>normal         </td> <td>abnormal</td> <td>notpresent     </td> <td>notpresent</td> <td>95                  </td> <td>163       </td> <td>7.7             </td> <td>136   </td> <td>3.8      </td> <td>9.8       </td> <td>32                </td> <td>6900                  </td> <td>3.4                 </td> <td>yes         </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>yes   </td> <td>1    </td>
+        </tr>
+        <tr>
+            <td>69  </td> <td>70            </td> <td>1.01            </td> <td>3      </td> <td>4    </td> <td>normal         </td> <td>abnormal</td> <td>notpresent     </td> <td>notpresent</td> <td>264                 </td> <td>87        </td> <td>2.7             </td> <td>130   </td> <td>4        </td> <td>12.5      </td> <td>37                </td> <td>9600                  </td> <td>4.1                 </td> <td>yes         </td> <td>yes              </td> <td>yes                    </td> <td>good    </td> <td>yes        </td> <td>no    </td> <td>1    </td>
+        </tr>
+        <tr>
+            <td>73  </td> <td>70            </td> <td>1.005           </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>70                  </td> <td>32        </td> <td>0.9             </td> <td>125   </td> <td>4        </td> <td>10        </td> <td>29                </td> <td>18900                 </td> <td>3.5                 </td> <td>yes         </td> <td>yes              </td> <td>no                     </td> <td>good    </td> <td>yes        </td> <td>no    </td> <td>1    </td>
+        </tr>
+        <tr>
+            <td>73  </td> <td>80            </td> <td>1.02            </td> <td>2      </td> <td>0    </td> <td>abnormal       </td> <td>abnormal</td> <td>notpresent     </td> <td>notpresent</td> <td>253                 </td> <td>142       </td> <td>4.6             </td> <td>138   </td> <td>5.8      </td> <td>10.5      </td> <td>33                </td> <td>7200                  </td> <td>4.3                 </td> <td>yes         </td> <td>yes              </td> <td>yes                    </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>1    </td>
+        </tr>
+        <tr>
+            <td>46  </td> <td>60            </td> <td>1.01            </td> <td>1      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>163                 </td> <td>92        </td> <td>3.3             </td> <td>141   </td> <td>4        </td> <td>9.8       </td> <td>28                </td> <td>14600                 </td> <td>3.2                 </td> <td>yes         </td> <td>yes              </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>1    </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (148 rows omitted)</p></div></div>
+</div>
+<section id="define-target-and-features">
+<h3>Define target and features<a class="headerlink" href="#define-target-and-features" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Blood Pressure&#39;</span><span class="p">,</span><span class="s1">&#39;Blood Glucose Random&#39;</span><span class="p">,</span><span class="s1">&#39;Hemoglobin&#39;</span><span class="p">,</span><span class="s1">&#39;Serum Creatinine&#39;</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sCKD</span> <span class="o">=</span> <span class="n">CKD</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="standardize">
+<h3>Standardize<a class="headerlink" href="#standardize" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Standardizing: &#39;</span><span class="p">,</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">sCKD</span> <span class="o">=</span> <span class="n">sCKD</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="n">standard_units</span><span class="p">(</span><span class="n">CKD</span><span class="p">[</span><span class="n">label</span><span class="p">]))</span>
+<span class="n">sCKD</span>   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standardizing:  Blood Pressure
+Standardizing:  Blood Glucose Random
+Standardizing:  Hemoglobin
+Standardizing:  Serum Creatinine
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Class</th> <th>Blood Pressure</th> <th>Blood Glucose Random</th> <th>Hemoglobin</th> <th>Serum Creatinine</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1    </td> <td>-0.363613     </td> <td>-0.221549           </td> <td>-0.865744 </td> <td>0.52525         </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>1.43173       </td> <td>-0.947597           </td> <td>-1.45745  </td> <td>1.63351         </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>-0.363613     </td> <td>3.84123             </td> <td>-1.00497  </td> <td>0.166693        </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>0.534056      </td> <td>0.396364            </td> <td>-2.81488  </td> <td>0.623038        </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>0.534056      </td> <td>0.643529            </td> <td>-2.08395  </td> <td>0.557846        </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>0.534056      </td> <td>-0.561402           </td> <td>-1.35303  </td> <td>1.79649         </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>-0.363613     </td> <td>2.04928             </td> <td>-0.413266 </td> <td>0.166693        </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>-0.363613     </td> <td>-0.947597           </td> <td>-1.28342  </td> <td>-0.420035       </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>0.534056      </td> <td>1.87936             </td> <td>-1.10939  </td> <td>0.786018        </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>-1.26128      </td> <td>0.489051            </td> <td>-1.35303  </td> <td>0.36227         </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (148 rows omitted)</p></div></div>
+</div>
+</section>
+</section>
+<section id="train-test-split">
+<h2>Train, test split<a class="headerlink" href="#train-test-split" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainK</span><span class="p">,</span> <span class="n">testK</span> <span class="o">=</span> <span class="n">CKD</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">CKD</span><span class="o">.</span><span class="n">num_rows</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">trainK</span><span class="o">.</span><span class="n">num_rows</span><span class="p">,</span> <span class="s1">&#39;training and&#39;</span><span class="p">,</span> <span class="n">testK</span><span class="o">.</span><span class="n">num_rows</span><span class="p">,</span> <span class="s1">&#39;test instances.&#39;</span><span class="p">)</span>
+
+<span class="n">trainK</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>126 training and 32 test instances.
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Age</th> <th>Blood Pressure</th> <th>Specific Gravity</th> <th>Albumin</th> <th>Sugar</th> <th>Red Blood Cells</th> <th>Pus Cell</th> <th>Pus Cell clumps</th> <th>Bacteria</th> <th>Blood Glucose Random</th> <th>Blood Urea</th> <th>Serum Creatinine</th> <th>Sodium</th> <th>Potassium</th> <th>Hemoglobin</th> <th>Packed Cell Volume</th> <th>White Blood Cell Count</th> <th>Red Blood Cell Count</th> <th>Hypertension</th> <th>Diabetes Mellitus</th> <th>Coronary Artery Disease</th> <th>Appetite</th> <th>Pedal Edema</th> <th>Anemia</th> <th>Class</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>74  </td> <td>60            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>88                  </td> <td>50        </td> <td>0.6             </td> <td>147   </td> <td>3.7      </td> <td>17.2      </td> <td>53                </td> <td>6000                  </td> <td>4.5                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
+        </tr>
+        <tr>
+            <td>58  </td> <td>70            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>102                 </td> <td>48        </td> <td>1.2             </td> <td>139   </td> <td>4.3      </td> <td>15        </td> <td>40                </td> <td>8100                  </td> <td>4.9                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
+        </tr>
+        <tr>
+            <td>60  </td> <td>80            </td> <td>1.025           </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>81                  </td> <td>15        </td> <td>0.5             </td> <td>141   </td> <td>3.6      </td> <td>15        </td> <td>46                </td> <td>10500                 </td> <td>5.3                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (123 rows omitted)</p></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predict_knn_class</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">trainK</span><span class="p">,</span> <span class="n">testK</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicting target value, Class, for row = 16 using k=8 with features: [&#39;Blood Pressure&#39;, &#39;Blood Glucose Random&#39;, &#39;Hemoglobin&#39;, &#39;Serum Creatinine&#39;]
+Actual classification: 0
+Predicted classification: 0
+Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<section id="test-prediction-accuracy-using-specified-features">
+<h3>Test prediction accuracy using specified features<a class="headerlink" href="#test-prediction-accuracy-using-specified-features" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">testK</span><span class="o">.</span><span class="n">num_rows</span><span class="p">):</span>
+    <span class="n">predict</span> <span class="o">=</span> <span class="n">predict_knn_class</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">trainK</span><span class="p">,</span> <span class="n">testK</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="n">predict</span> <span class="o">==</span> <span class="n">testK</span><span class="p">[</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Percent correct: </span><span class="si">{</span><span class="n">correct</span><span class="o">/</span><span class="n">i</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 12.9%
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><font color=green>Pretty good prediction, let’s see if we can do better with additional features</strong></p>
+</section>
+<section id="add-additional-features">
+<h3>Add additional features<a class="headerlink" href="#add-additional-features" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="s1">&#39;Blood Pressure&#39;</span><span class="p">,</span><span class="s1">&#39;Blood Glucose Random&#39;</span><span class="p">,</span><span class="s1">&#39;Hemoglobin&#39;</span><span class="p">,</span><span class="s1">&#39;Serum Creatinine&#39;</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sCKD</span> <span class="o">=</span> <span class="n">CKD</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Standardizing: &#39;</span><span class="p">,</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">sCKD</span> <span class="o">=</span> <span class="n">sCKD</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="n">standard_units</span><span class="p">(</span><span class="n">CKD</span><span class="p">[</span><span class="n">label</span><span class="p">]))</span>
+<span class="n">sCKD</span>   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standardizing:  Age
+Standardizing:  Blood Pressure
+Standardizing:  Blood Glucose Random
+Standardizing:  Hemoglobin
+Standardizing:  Serum Creatinine
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Class</th> <th>Age</th> <th>Blood Pressure</th> <th>Blood Glucose Random</th> <th>Hemoglobin</th> <th>Serum Creatinine</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1    </td> <td>-0.101098</td> <td>-0.363613     </td> <td>-0.221549           </td> <td>-0.865744 </td> <td>0.52525         </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>0.222253 </td> <td>1.43173       </td> <td>-0.947597           </td> <td>-1.45745  </td> <td>1.63351         </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>0.868954 </td> <td>-0.363613     </td> <td>3.84123             </td> <td>-1.00497  </td> <td>0.166693        </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>1.19231  </td> <td>0.534056      </td> <td>0.396364            </td> <td>-2.81488  </td> <td>0.623038        </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>0.739614 </td> <td>0.534056      </td> <td>0.643529            </td> <td>-2.08395  </td> <td>0.557846        </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>-0.101098</td> <td>0.534056      </td> <td>-0.561402           </td> <td>-1.35303  </td> <td>1.79649         </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>1.25698  </td> <td>-0.363613     </td> <td>2.04928             </td> <td>-0.413266 </td> <td>0.166693        </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>1.51566  </td> <td>-0.363613     </td> <td>-0.947597           </td> <td>-1.28342  </td> <td>-0.420035       </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>1.51566  </td> <td>0.534056      </td> <td>1.87936             </td> <td>-1.10939  </td> <td>0.786018        </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>-0.230439</td> <td>-1.26128      </td> <td>0.489051            </td> <td>-1.35303  </td> <td>0.36227         </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (148 rows omitted)</p></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainK</span><span class="p">,</span> <span class="n">testK</span> <span class="o">=</span> <span class="n">CKD</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">CKD</span><span class="o">.</span><span class="n">num_rows</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">trainK</span><span class="o">.</span><span class="n">num_rows</span><span class="p">,</span> <span class="s1">&#39;training and&#39;</span><span class="p">,</span> <span class="n">testK</span><span class="o">.</span><span class="n">num_rows</span><span class="p">,</span> <span class="s1">&#39;test instances.&#39;</span><span class="p">)</span>
+
+<span class="n">trainK</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>126 training and 32 test instances.
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Age</th> <th>Blood Pressure</th> <th>Specific Gravity</th> <th>Albumin</th> <th>Sugar</th> <th>Red Blood Cells</th> <th>Pus Cell</th> <th>Pus Cell clumps</th> <th>Bacteria</th> <th>Blood Glucose Random</th> <th>Blood Urea</th> <th>Serum Creatinine</th> <th>Sodium</th> <th>Potassium</th> <th>Hemoglobin</th> <th>Packed Cell Volume</th> <th>White Blood Cell Count</th> <th>Red Blood Cell Count</th> <th>Hypertension</th> <th>Diabetes Mellitus</th> <th>Coronary Artery Disease</th> <th>Appetite</th> <th>Pedal Edema</th> <th>Anemia</th> <th>Class</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>42  </td> <td>80            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>132                 </td> <td>24        </td> <td>0.7             </td> <td>140   </td> <td>4.1      </td> <td>14.4      </td> <td>50                </td> <td>5000                  </td> <td>4.5                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
+        </tr>
+        <tr>
+            <td>73  </td> <td>80            </td> <td>1.02            </td> <td>2      </td> <td>0    </td> <td>abnormal       </td> <td>abnormal</td> <td>notpresent     </td> <td>notpresent</td> <td>253                 </td> <td>142       </td> <td>4.6             </td> <td>138   </td> <td>5.8      </td> <td>10.5      </td> <td>33                </td> <td>7200                  </td> <td>4.3                 </td> <td>yes         </td> <td>yes              </td> <td>yes                    </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>1    </td>
+        </tr>
+        <tr>
+            <td>63  </td> <td>70            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>113                 </td> <td>25        </td> <td>0.6             </td> <td>146   </td> <td>4.9      </td> <td>16.5      </td> <td>52                </td> <td>8000                  </td> <td>5.1                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (123 rows omitted)</p></div></div>
+</div>
+</section>
+<section id="id1">
+<h3>Test prediction accuracy using specified features<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">testK</span><span class="o">.</span><span class="n">num_rows</span><span class="p">):</span>
+    <span class="n">predict</span> <span class="o">=</span> <span class="n">predict_knn_class</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">trainK</span><span class="p">,</span> <span class="n">testK</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="n">predict</span> <span class="o">==</span> <span class="n">testK</span><span class="p">[</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Percent correct: </span><span class="si">{</span><span class="n">correct</span><span class="o">/</span><span class="n">i</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 87.1%
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><font color=green>Improved…</strong></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="bootstrap.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bootstrap</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="string_to_number.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data wrangling: strings to numbers</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Nearest Neighbor Classification</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-from-training-data">Learning from training data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbor">k nearest neighbor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbor-concept-a-id-nnconcept-a">Nearest neighbor concept<a id="NNconcept"></a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-function-inpired-from-above">Distance function inpired from above</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbor-functions">Nearest neighbor Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-functions">Prediction Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-functions">Regression Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-brown-classification-example"><font color="brown">Classification example</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-target-and-features">Define target and features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize">Standardize</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">Train, test split</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-prediction-accuracy-using-specified-features">Test prediction accuracy using specified features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-additional-features">Add additional features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Test prediction accuracy using specified features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jonathan Smith
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
