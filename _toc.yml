@@ -11,4 +11,5 @@ chapters:
 - file: Tables
 - file: Function_examples
 - file: bootstrap
+- file: kNN_classification.ipynb
 - file: string_to_number
