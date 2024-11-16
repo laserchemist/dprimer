@@ -63,10 +63,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'kNN_classification';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'k-Nearest_Neighbors_classification';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data wrangling: strings to numbers" href="string_to_number.html" />
+    <link rel="next" title="Nearest Neighbor Regression" href="k-Nearest_Neighbors_multiple_regression.html" />
     <link rel="prev" title="Bootstrap" href="bootstrap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -169,6 +169,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="bootstrap.html">Bootstrap</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Nearest Neighbor Classification</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="k-Nearest_Neighbors_multiple_regression.html">Nearest Neighbor Regression</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="string_to_number.html">Data wrangling: strings to numbers</a></li>
 </ul>
 
@@ -241,7 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FkNN_classification.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fk-Nearest_Neighbors_classification.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -271,7 +273,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/kNN_classification.ipynb" target="_blank"
+      <li><a href="_sources/k-Nearest_Neighbors_classification.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -414,10 +416,21 @@ document.write(`
 <h2>Nearest neighbor concept<a id='NNconcept'></a><a class="headerlink" href="#nearest-neighbor-concept-a-id-nnconcept-a" title="Permalink to this heading">#</a></h2>
 <p>The training examines the characteristics of <em>k</em> nearest neighbors to the data point for which a prediction will be made. Nearness is measured using several different <a class="reference external" href="https://www.nhm.uio.no/english/research/infrastructure/past/help/similarity.html">metrics</a> with Euclidean distance being a common one for numerical attributes.<br />
 Euclidean distance:<br />
-1-D: $<span class="math notranslate nohighlight">\( d(p,q) = \sqrt{(p-q)^{2}} \)</span><span class="math notranslate nohighlight">\(   
- 2-D: \)</span><span class="math notranslate nohighlight">\( d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}} \)</span>$</p>
+1-D:
+$<span class="math notranslate nohighlight">\( 
+d(p,q) = \sqrt{(p-q)^{2}} 
+\label{eq:distance_1D} \tag{1}
+\)</span><span class="math notranslate nohighlight">\(   
+ 2-D: 
+ \)</span><span class="math notranslate nohighlight">\( 
+ d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}} 
+ \label{eq:distance_2D} \tag{2}
+ \)</span>$</p>
 <p>For multiple points (rows, multidimensional):
-$<span class="math notranslate nohighlight">\( d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}} \)</span>$</p>
+$<span class="math notranslate nohighlight">\( 
+ d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}} 
+  \label{eq:distance_multiD} \tag{3}
+ \)</span>$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -681,13 +694,13 @@ Standardizing:  Serum Creatinine
     </thead>
     <tbody>
         <tr>
-            <td>74  </td> <td>60            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>88                  </td> <td>50        </td> <td>0.6             </td> <td>147   </td> <td>3.7      </td> <td>17.2      </td> <td>53                </td> <td>6000                  </td> <td>4.5                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
+            <td>73  </td> <td>100           </td> <td>1.01            </td> <td>3      </td> <td>2    </td> <td>abnormal       </td> <td>abnormal</td> <td>present        </td> <td>notpresent</td> <td>295                 </td> <td>90        </td> <td>5.6             </td> <td>140   </td> <td>2.9      </td> <td>9.2       </td> <td>30                </td> <td>7000                  </td> <td>3.2                 </td> <td>yes         </td> <td>yes              </td> <td>yes                    </td> <td>poor    </td> <td>no         </td> <td>no    </td> <td>1    </td>
         </tr>
         <tr>
-            <td>58  </td> <td>70            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>102                 </td> <td>48        </td> <td>1.2             </td> <td>139   </td> <td>4.3      </td> <td>15        </td> <td>40                </td> <td>8100                  </td> <td>4.9                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
+            <td>57  </td> <td>60            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>105                 </td> <td>49        </td> <td>1.2             </td> <td>150   </td> <td>4.7      </td> <td>15.7      </td> <td>44                </td> <td>10400                 </td> <td>6.2                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
         </tr>
         <tr>
-            <td>60  </td> <td>80            </td> <td>1.025           </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>81                  </td> <td>15        </td> <td>0.5             </td> <td>141   </td> <td>3.6      </td> <td>15        </td> <td>46                </td> <td>10500                 </td> <td>5.3                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
+            <td>44  </td> <td>60            </td> <td>1.025           </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>96                  </td> <td>33        </td> <td>0.9             </td> <td>147   </td> <td>4.5      </td> <td>16.9      </td> <td>41                </td> <td>7200                  </td> <td>5                   </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
         </tr>
     </tbody>
 </table>
@@ -701,7 +714,7 @@ Standardizing:  Serum Creatinine
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicting target value, Class, for row = 16 using k=8 with features: [&#39;Blood Pressure&#39;, &#39;Blood Glucose Random&#39;, &#39;Hemoglobin&#39;, &#39;Serum Creatinine&#39;]
-Actual classification: 0
+Actual classification: 1
 Predicted classification: 0
 Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
 </pre></div>
@@ -724,7 +737,7 @@ Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 12.9%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 90.3%
 </pre></div>
 </div>
 </div>
@@ -827,13 +840,13 @@ Standardizing:  Serum Creatinine
     </thead>
     <tbody>
         <tr>
-            <td>42  </td> <td>80            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>132                 </td> <td>24        </td> <td>0.7             </td> <td>140   </td> <td>4.1      </td> <td>14.4      </td> <td>50                </td> <td>5000                  </td> <td>4.5                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
+            <td>60  </td> <td>80            </td> <td>1.025           </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>81                  </td> <td>15        </td> <td>0.5             </td> <td>141   </td> <td>3.6      </td> <td>15        </td> <td>46                </td> <td>10500                 </td> <td>5.3                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
         </tr>
         <tr>
-            <td>73  </td> <td>80            </td> <td>1.02            </td> <td>2      </td> <td>0    </td> <td>abnormal       </td> <td>abnormal</td> <td>notpresent     </td> <td>notpresent</td> <td>253                 </td> <td>142       </td> <td>4.6             </td> <td>138   </td> <td>5.8      </td> <td>10.5      </td> <td>33                </td> <td>7200                  </td> <td>4.3                 </td> <td>yes         </td> <td>yes              </td> <td>yes                    </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>1    </td>
+            <td>56  </td> <td>70            </td> <td>1.015           </td> <td>4      </td> <td>1    </td> <td>abnormal       </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>210                 </td> <td>26        </td> <td>1.7             </td> <td>136   </td> <td>3.8      </td> <td>16.1      </td> <td>52                </td> <td>12500                 </td> <td>5.6                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>1    </td>
         </tr>
         <tr>
-            <td>63  </td> <td>70            </td> <td>1.02            </td> <td>0      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>113                 </td> <td>25        </td> <td>0.6             </td> <td>146   </td> <td>4.9      </td> <td>16.5      </td> <td>52                </td> <td>8000                  </td> <td>5.1                 </td> <td>no          </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>0    </td>
+            <td>70  </td> <td>100           </td> <td>1.015           </td> <td>4      </td> <td>0    </td> <td>normal         </td> <td>normal  </td> <td>notpresent     </td> <td>notpresent</td> <td>118                 </td> <td>125       </td> <td>5.3             </td> <td>136   </td> <td>4.9      </td> <td>12        </td> <td>37                </td> <td>8400                  </td> <td>8                   </td> <td>yes         </td> <td>no               </td> <td>no                     </td> <td>good    </td> <td>no         </td> <td>no    </td> <td>1    </td>
         </tr>
     </tbody>
 </table>
@@ -853,7 +866,7 @@ Standardizing:  Serum Creatinine
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 87.1%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 77.4%
 </pre></div>
 </div>
 </div>
@@ -904,11 +917,11 @@ Standardizing:  Serum Creatinine
       </div>
     </a>
     <a class="right-next"
-       href="string_to_number.html"
+       href="k-Nearest_Neighbors_multiple_regression.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data wrangling: strings to numbers</p>
+        <p class="prev-next-title">Nearest Neighbor Regression</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

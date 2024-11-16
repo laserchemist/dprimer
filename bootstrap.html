@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'bootstrap';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Nearest Neighbor Classification" href="kNN_classification.html" />
+    <link rel="next" title="Nearest Neighbor Classification" href="k-Nearest_Neighbors_classification.html" />
     <link rel="prev" title="Functions" href="Function_examples.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -165,7 +165,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Tables.html">Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Function_examples.html">Functions</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Bootstrap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kNN_classification.html">Nearest Neighbor Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k-Nearest_Neighbors_classification.html">Nearest Neighbor Classification</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="k-Nearest_Neighbors_multiple_regression.html">Nearest Neighbor Regression</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="string_to_number.html">Data wrangling: strings to numbers</a></li>
 </ul>
@@ -446,7 +448,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b3972c19b576ca78771c323e26a99c831fa14c8dcf690eefba70fbd40ef5a5e6.png" src="_images/b3972c19b576ca78771c323e26a99c831fa14c8dcf690eefba70fbd40ef5a5e6.png" />
+<img alt="_images/1b3da872c24a4e48300cd4c2f3afe574c815fbc9eb5066ce8416e47044f43caa.png" src="_images/1b3da872c24a4e48300cd4c2f3afe574c815fbc9eb5066ce8416e47044f43caa.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -465,10 +467,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope: 10.39 Intercept:  34.77
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope: 10.75 Intercept:  33.43
 </pre></div>
 </div>
-<img alt="_images/d49daa810e4479d6f277c3108ac917b4ff9619cc6a6b9d7fba54858af1ab38dc.png" src="_images/d49daa810e4479d6f277c3108ac917b4ff9619cc6a6b9d7fba54858af1ab38dc.png" />
+<img alt="_images/4ade1a8bb3196edd472c04c87b2ce0bded2efcbb622d11900e574dace6713016.png" src="_images/4ade1a8bb3196edd472c04c87b2ce0bded2efcbb622d11900e574dace6713016.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -479,7 +481,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.3504322248
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.6640680344
 </pre></div>
 </div>
 </div>
@@ -503,7 +505,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 10.12740608,  11.31442706])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 10.14418686,  11.29988802])
 </pre></div>
 </div>
 </div>
@@ -531,7 +533,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.59351048730391121
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.57785057909605886
 </pre></div>
 </div>
 </div>
@@ -549,7 +551,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/47f8f812e227d3c58b353cb9981b99584937eae4c01a523a7ba6a030c219344d.png" src="_images/47f8f812e227d3c58b353cb9981b99584937eae4c01a523a7ba6a030c219344d.png" />
+<img alt="_images/895bad755550d1fcc296cb12103de07b3612107ee002017ccb50beae2656f556.png" src="_images/895bad755550d1fcc296cb12103de07b3612107ee002017ccb50beae2656f556.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -565,7 +567,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 31.31303408,  35.63526505])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 31.29318535,  35.65807194])
 </pre></div>
 </div>
 </div>
@@ -582,7 +584,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8f60cdf1bbdbe1246306e5311742eb89fcd8d077405e46f3dcf16c465112ef29.png" src="_images/8f60cdf1bbdbe1246306e5311742eb89fcd8d077405e46f3dcf16c465112ef29.png" />
+<img alt="_images/b8d9e8a3b8d09f8756d840a54d4f05375f097814e92324455fb390660063880b.png" src="_images/b8d9e8a3b8d09f8756d840a54d4f05375f097814e92324455fb390660063880b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -642,7 +644,7 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="kNN_classification.html"
+       href="k-Nearest_Neighbors_classification.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
