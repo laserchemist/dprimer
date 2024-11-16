@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'k-Nearest_Neighbors_classification';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -414,21 +416,24 @@ document.write(`
 <h2>Nearest neighbor concept<a id='NNconcept'></a><a class="headerlink" href="#nearest-neighbor-concept-a-id-nnconcept-a" title="Permalink to this heading">#</a></h2>
 <p>The training examines the characteristics of <em>k</em> nearest neighbors to the data point for which a prediction will be made. Nearness is measured using several different <a class="reference external" href="https://www.nhm.uio.no/english/research/infrastructure/past/help/similarity.html">metrics</a> with Euclidean distance being a common one for numerical attributes.<br />
 Euclidean distance:<br />
-1-D:
-\begin{align}
-d(p,q) = \sqrt{(p-q)^{2}}
+1-D:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d8c0a516-b706-42ba-9aca-01fcaab956cf">
+<span class="eqno">(1)<a class="headerlink" href="#equation-d8c0a516-b706-42ba-9aca-01fcaab956cf" title="Permalink to this equation">#</a></span>\[\begin{align} 
+d(p,q) = \sqrt{(p-q)^{2}} 
 \label{eq:distance_1D} \tag{1}
-\end{align}
-2-D:
-\begin{align}
-d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}}
-\label{eq:distance_2D} \tag{2}
-\end{align}</p>
-<p>For multiple points (rows, multidimensional):
-\begin{align}
-d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}}
-\label{eq:distance_multiD} \tag{3}
-\end{align}</p>
+\end{align}\]</div>
+<p>2-D:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-168c8357-0733-4f20-8031-39783b41e72a">
+<span class="eqno">(2)<a class="headerlink" href="#equation-168c8357-0733-4f20-8031-39783b41e72a" title="Permalink to this equation">#</a></span>\[\begin{align} 
+ d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}} 
+ \label{eq:distance_2D} \tag{2}
+\end{align}\]</div>
+<p>For multiple points (rows, multidimensional):</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2a5acbb2-8a22-477d-bbf7-3501a97836d2">
+<span class="eqno">(3)<a class="headerlink" href="#equation-2a5acbb2-8a22-477d-bbf7-3501a97836d2" title="Permalink to this equation">#</a></span>\[\begin{align} 
+ d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}} 
+  \label{eq:distance_multiD} \tag{3}
+\end{align}\]</div>
 <p>import numpy as np
 from datascience import *
 import matplotlib</p>
@@ -544,7 +549,7 @@ plt.style.use(‘ggplot’)</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2012</span><span class="o">/</span><span class="mf">4237366297.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2029</span><span class="o">/</span><span class="mf">4237366297.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">CKD</span><span class="o">=</span><span class="n">Table</span><span class="p">()</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;data/ckd.csv&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">CKD</span>
 

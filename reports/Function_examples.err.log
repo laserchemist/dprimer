@@ -25,7 +25,7 @@ partial_census_table=partial_census_table.relabeled('POPESTIMATE2010', '2010').r
 partial_census_table
 ------------------
 
-[0;36m  File [0;32m"/tmp/ipykernel_1810/3230332571.py"[0;36m, line [0;32m4[0m
+[0;36m  File [0;32m"/tmp/ipykernel_1830/3230332571.py"[0;36m, line [0;32m4[0m
 [0;31m    partial_census_table = full_census_table.select('SEX', 'AGE', 'POPESTIMATE2010', 'POPESTIMATE2020').[0m
 [0m                                                                                                        ^[0m
 [0;31mSyntaxError[0m[0;31m:[0m invalid syntax
