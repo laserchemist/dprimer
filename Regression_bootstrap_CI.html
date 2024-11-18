@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Bootstrap &#8212; Data Science Primer</title>
+    <title>Regression and Bootstrap Confidence Intervals &#8212; Data Science Primer</title>
   
   
   
@@ -61,7 +61,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'bootstrap';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Regression_bootstrap_CI';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Nearest Neighbor Classification" href="k-Nearest_Neighbors_classification.html" />
@@ -164,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tables.html">Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Function_examples.html">Functions</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bootstrap</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Regression and Bootstrap Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="k-Nearest_Neighbors_classification.html">Nearest Neighbor Classification</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="k-Nearest_Neighbors_multiple_regression.html">Nearest Neighbor Regression</a></li>
@@ -241,7 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fbootstrap.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FRegression_bootstrap_CI.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -271,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/bootstrap.ipynb" target="_blank"
+      <li><a href="_sources/Regression_bootstrap_CI.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -353,7 +353,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Bootstrap</h1>
+    <h1>Regression and Bootstrap Confidence Intervals</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -380,8 +380,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="bootstrap">
-<h1>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="regression-and-bootstrap-confidence-intervals">
+<h1>Regression and Bootstrap Confidence Intervals<a class="headerlink" href="#regression-and-bootstrap-confidence-intervals" title="Permalink to this heading">#</a></h1>
 <p>The bootstrap is a method which computes a statistic of a dataset and the uncertainty in the population statistic by using repeated sampling with replacement of a data set. We can use the datascience table .sample() method to carry out re-sampling of a table with replacement. What does this mean in practice? It meeans that some of the rows of data may appear twice or more in the re-sampled data and other will be omitted leaving the same number of data points (rows) but, importantly, a new estimate of the statistic. This is demonstrated below with the Old Faithful data investigating the relationship between eruption duration (minutes) and the wait time (minutes) until the next eruption.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -448,7 +448,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/afd4bdb242e4543fd564db48c82c99af8bd1a88348d5af53eec81eaf37ca3169.png" src="_images/afd4bdb242e4543fd564db48c82c99af8bd1a88348d5af53eec81eaf37ca3169.png" />
+<img alt="_images/62aa158f0d739b01c8b5787544bad974430ee2c7e9a357d3f1ef66feabcca909.png" src="_images/62aa158f0d739b01c8b5787544bad974430ee2c7e9a357d3f1ef66feabcca909.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -467,10 +467,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope: 9.97 Intercept:  36.48
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope: 10.67 Intercept:  33.81
 </pre></div>
 </div>
-<img alt="_images/535d23547cfadd1b17c9e2d56c31d73e22e4d86a046bd83c995639c22ad481e8.png" src="_images/535d23547cfadd1b17c9e2d56c31d73e22e4d86a046bd83c995639c22ad481e8.png" />
+<img alt="_images/51b861db9ebaa33b9238a466e33ca96af3b52c02e46df4d9d5f900101b79c127.png" src="_images/51b861db9ebaa33b9238a466e33ca96af3b52c02e46df4d9d5f900101b79c127.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -481,7 +481,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.3907516193
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.8816705919
 </pre></div>
 </div>
 </div>
@@ -505,7 +505,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 10.15217318,  11.32395309])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 10.13787136,  11.30396804])
 </pre></div>
 </div>
 </div>
@@ -533,7 +533,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.58588995751565598
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.58304834000174033
 </pre></div>
 </div>
 </div>
@@ -551,7 +551,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ce4c6f70351094cf1a8ac25853164618c5ccc87f65d7acaa79468a598f5ebfc1.png" src="_images/ce4c6f70351094cf1a8ac25853164618c5ccc87f65d7acaa79468a598f5ebfc1.png" />
+<img alt="_images/7d1d5804d7a6fbc71ad377ce9a453133f6ecdec5c3b6d5aca782819db3131186.png" src="_images/7d1d5804d7a6fbc71ad377ce9a453133f6ecdec5c3b6d5aca782819db3131186.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -567,7 +567,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 31.27648594,  35.66647755])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 31.29072594,  35.67597496])
 </pre></div>
 </div>
 </div>
@@ -584,7 +584,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2693f70d5775d106554a807fc02fdee8fa0f3c77080d407fb294080a20595222.png" src="_images/2693f70d5775d106554a807fc02fdee8fa0f3c77080d407fb294080a20595222.png" />
+<img alt="_images/a9025cfb5b8e61e623707a8cbe1c20d09669a3edd0e355e3d200d48537c8ca62.png" src="_images/a9025cfb5b8e61e623707a8cbe1c20d09669a3edd0e355e3d200d48537c8ca62.png" />
 </div>
 </div>
 <div class="cell docutils container">

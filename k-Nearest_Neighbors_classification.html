@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Nearest Neighbor Regression" href="k-Nearest_Neighbors_multiple_regression.html" />
-    <link rel="prev" title="Bootstrap" href="bootstrap.html" />
+    <link rel="prev" title="Regression and Bootstrap Confidence Intervals" href="Regression_bootstrap_CI.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -166,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tables.html">Tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Function_examples.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bootstrap.html">Bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regression_bootstrap_CI.html">Regression and Bootstrap Confidence Intervals</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Nearest Neighbor Classification</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="k-Nearest_Neighbors_multiple_regression.html">Nearest Neighbor Regression</a></li>
@@ -418,18 +418,18 @@ document.write(`
 <p>The training examines the characteristics of <em>k</em> nearest neighbors to the data point for which a prediction will be made. Nearness is measured using several different <a class="reference external" href="https://www.nhm.uio.no/english/research/infrastructure/past/help/similarity.html">metrics</a> with Euclidean distance being a common one for numerical attributes.<br />
 Euclidean distance:<br />
 1-D:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ff5f362b-02f5-4a15-b86a-01a9191695f0">
-<span class="eqno">(1)<a class="headerlink" href="#equation-ff5f362b-02f5-4a15-b86a-01a9191695f0" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-b9ccac5d-7c97-4cd6-9b73-85e4530da72a">
+<span class="eqno">(1)<a class="headerlink" href="#equation-b9ccac5d-7c97-4cd6-9b73-85e4530da72a" title="Permalink to this equation">#</a></span>\[\begin{align} 
 d(p,q) = \sqrt{(p-q)^{2}} 
 \end{align}\]</div>
 <p>2-D:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ed705a78-204f-4a62-9bad-ea9d3e4f1047">
-<span class="eqno">(2)<a class="headerlink" href="#equation-ed705a78-204f-4a62-9bad-ea9d3e4f1047" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-3553c0a7-5cd4-4db9-bb90-2ba772fa13cd">
+<span class="eqno">(2)<a class="headerlink" href="#equation-3553c0a7-5cd4-4db9-bb90-2ba772fa13cd" title="Permalink to this equation">#</a></span>\[\begin{align} 
  d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}} 
 \end{align}\]</div>
 <p>For multiple points (rows, multidimensional):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5cbe764c-49fe-444c-a8e8-0e0a336cf317">
-<span class="eqno">(3)<a class="headerlink" href="#equation-5cbe764c-49fe-444c-a8e8-0e0a336cf317" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-0d4310e0-186f-4103-9011-0854c21d984b">
+<span class="eqno">(3)<a class="headerlink" href="#equation-0d4310e0-186f-4103-9011-0854c21d984b" title="Permalink to this equation">#</a></span>\[\begin{align} 
  d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}} 
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -695,13 +695,13 @@ Standardizing:  Serum Creatinine
     </thead>
     <tbody>
         <tr>
-            <td>0    </td> <td>-1.26128      </td> <td>-0.128862           </td> <td>0.700526  </td> <td>-0.387439       </td>
+            <td>1    </td> <td>-0.363613     </td> <td>-0.221549           </td> <td>-1.28342  </td> <td>0.00371347      </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0.534056      </td> <td>-0.159758           </td> <td>0.456884  </td> <td>-0.322247       </td>
+            <td>1    </td> <td>1.43173       </td> <td>-0.0516231          </td> <td>-1.90992  </td> <td>2.28543         </td>
         </tr>
         <tr>
-            <td>0    </td> <td>-1.26128      </td> <td>-0.345132           </td> <td>0.456884  </td> <td>-0.420035       </td>
+            <td>0    </td> <td>-1.26128      </td> <td>-0.453267           </td> <td>0.31766   </td> <td>-0.583015       </td>
         </tr>
     </tbody>
 </table>
@@ -715,12 +715,12 @@ Standardizing:  Serum Creatinine
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicting target value, Class, for row = 16 using k=8 with features: [&#39;Blood Pressure&#39;, &#39;Blood Glucose Random&#39;, &#39;Hemoglobin&#39;, &#39;Serum Creatinine&#39;]
-Actual classification: 0
-Predicted classification: 0
-Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
+Actual classification: 1
+Predicted classification: 1
+Closest classifications: [1, 1, 1, 1, 1, 1, 1, 1]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -740,7 +740,7 @@ Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 96.9%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 100.0%
 </pre></div>
 </div>
 </div>
@@ -794,38 +794,38 @@ Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
     </thead>
     <tbody>
         <tr>
-            <td>0    </td> <td>0      </td> <td>60            </td> <td>105                 </td> <td>14.7      </td> <td>0.5             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>113                 </td> <td>15.3      </td> <td>1.1             </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>100           </td> <td>255                 </td> <td>7.3       </td> <td>12.8            </td>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>99                  </td> <td>17.7      </td> <td>1.2             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>70            </td> <td>87                  </td> <td>17.1      </td> <td>0.5             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>70            </td> <td>83                  </td> <td>16.2      </td> <td>1.2             </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>1      </td> <td>50            </td> <td>241                 </td> <td>9.6       </td> <td>12              </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>1      </td> <td>80            </td> <td>157                 </td> <td>5.6       </td> <td>4.1             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>111                 </td> <td>16.2      </td> <td>0.8             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>132                 </td> <td>17.8      </td> <td>0.8             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>120                 </td> <td>13.4      </td> <td>0.8             </td>
         </tr>
         <tr>
             <td>0    </td> <td>0      </td> <td>80            </td> <td>78                  </td> <td>16.1      </td> <td>0.6             </td>
         </tr>
-        <tr>
-            <td>1    </td> <td>1      </td> <td>90            </td> <td>70                  </td> <td>9.5       </td> <td>7.2             </td>
-        </tr>
-        <tr>
-            <td>0    </td> <td>0      </td> <td>60            </td> <td>91                  </td> <td>13.5      </td> <td>1.2             </td>
-        </tr>
-        <tr>
-            <td>0    </td> <td>0      </td> <td>60            </td> <td>102                 </td> <td>14.6      </td> <td>0.4             </td>
-        </tr>
-        <tr>
-            <td>0    </td> <td>0      </td> <td>60            </td> <td>99                  </td> <td>13        </td> <td>0.8             </td>
-        </tr>
-        <tr>
-            <td>0    </td> <td>0      </td> <td>70            </td> <td>100                 </td> <td>14.3      </td> <td>1.1             </td>
-        </tr>
-        <tr>
-            <td>0    </td> <td>0      </td> <td>70            </td> <td>123                 </td> <td>14.6      </td> <td>1               </td>
-        </tr>
-        <tr>
-            <td>0    </td> <td>0      </td> <td>80            </td> <td>133                 </td> <td>14.8      </td> <td>1.2             </td>
-        </tr>
     </tbody>
 </table>
-<p>... (22 rows omitted)</p></div><img alt="_images/314c2c80941c72529a07196a64d54baeb2bbdb9d4de96e4905020f5389bc907a.png" src="_images/314c2c80941c72529a07196a64d54baeb2bbdb9d4de96e4905020f5389bc907a.png" />
+<p>... (22 rows omitted)</p></div><img alt="_images/2df195d079cb36861a42639058a7df8702d132118b371e3e6a06245550db23e6.png" src="_images/2df195d079cb36861a42639058a7df8702d132118b371e3e6a06245550db23e6.png" />
 </div>
 </div>
 <p><strong><font color=blue>Interpretation: Patients with high hemoglobin numbers and low blood glucose are less likely to be predicted to have CKD</strong></p>
@@ -844,38 +844,38 @@ Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
     </thead>
     <tbody>
         <tr>
-            <td>0    </td> <td>0      </td> <td>60            </td> <td>105                 </td> <td>14.7      </td> <td>0.5             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>113                 </td> <td>15.3      </td> <td>1.1             </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>100           </td> <td>255                 </td> <td>7.3       </td> <td>12.8            </td>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>99                  </td> <td>17.7      </td> <td>1.2             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>70            </td> <td>87                  </td> <td>17.1      </td> <td>0.5             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>70            </td> <td>83                  </td> <td>16.2      </td> <td>1.2             </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>1      </td> <td>50            </td> <td>241                 </td> <td>9.6       </td> <td>12              </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>1      </td> <td>80            </td> <td>157                 </td> <td>5.6       </td> <td>4.1             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>111                 </td> <td>16.2      </td> <td>0.8             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>132                 </td> <td>17.8      </td> <td>0.8             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>120                 </td> <td>13.4      </td> <td>0.8             </td>
         </tr>
         <tr>
             <td>0    </td> <td>0      </td> <td>80            </td> <td>78                  </td> <td>16.1      </td> <td>0.6             </td>
         </tr>
-        <tr>
-            <td>1    </td> <td>1      </td> <td>90            </td> <td>70                  </td> <td>9.5       </td> <td>7.2             </td>
-        </tr>
-        <tr>
-            <td>0    </td> <td>0      </td> <td>60            </td> <td>91                  </td> <td>13.5      </td> <td>1.2             </td>
-        </tr>
-        <tr>
-            <td>0    </td> <td>0      </td> <td>60            </td> <td>102                 </td> <td>14.6      </td> <td>0.4             </td>
-        </tr>
-        <tr>
-            <td>0    </td> <td>0      </td> <td>60            </td> <td>99                  </td> <td>13        </td> <td>0.8             </td>
-        </tr>
-        <tr>
-            <td>0    </td> <td>0      </td> <td>70            </td> <td>100                 </td> <td>14.3      </td> <td>1.1             </td>
-        </tr>
-        <tr>
-            <td>0    </td> <td>0      </td> <td>70            </td> <td>123                 </td> <td>14.6      </td> <td>1               </td>
-        </tr>
-        <tr>
-            <td>0    </td> <td>0      </td> <td>80            </td> <td>133                 </td> <td>14.8      </td> <td>1.2             </td>
-        </tr>
     </tbody>
 </table>
-<p>... (22 rows omitted)</p></div><img alt="_images/e8ba0451273a83c44ac875bcb888870c4f19cacf33ecc542ddb1b4b232c25ede.png" src="_images/e8ba0451273a83c44ac875bcb888870c4f19cacf33ecc542ddb1b4b232c25ede.png" />
+<p>... (22 rows omitted)</p></div><img alt="_images/607a36286650627ea261f57661e898808a7c7df8e0dfc2ddf46c5f0ceecc7eda.png" src="_images/607a36286650627ea261f57661e898808a7c7df8e0dfc2ddf46c5f0ceecc7eda.png" />
 </div>
 </div>
 <p><strong><font color=blue>Interpretation: Patients with low creatinine and blood glucose are less likely to be predicted to have CKD</strong></p>
@@ -991,13 +991,13 @@ Standardizing:  Blood Urea
     </thead>
     <tbody>
         <tr>
-            <td>1    </td> <td>-0.101098</td> <td>-0.363613     </td> <td>-0.221549           </td> <td>-0.865744 </td> <td>0.52525         </td> <td>-3.73015 </td> <td>0.0724741 </td>
+            <td>0    </td> <td>0.0929122</td> <td>-1.26128      </td> <td>-0.49961            </td> <td>-0.239236 </td> <td>-0.452631       </td> <td>-0.515439</td> <td>-0.308517 </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0.028242 </td> <td>0.534056      </td> <td>0.0874074           </td> <td>0.14363   </td> <td>-0.452631       </td> <td>0.0203463</td> <td>-0.139188 </td>
+            <td>0    </td> <td>-0.941811</td> <td>0.534056      </td> <td>-0.422371           </td> <td>0.83975   </td> <td>-0.322247       </td> <td>-0.515439</td> <td>-0.456681 </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0.545603 </td> <td>-0.363613     </td> <td>-0.453267           </td> <td>0.456884  </td> <td>-0.322247       </td> <td>0.0203463</td> <td>-0.0968554</td>
+            <td>0    </td> <td>0.739614 </td> <td>-0.363613     </td> <td>0.025616            </td> <td>0.00440582</td> <td>-0.387439       </td> <td>0.422185 </td> <td>-0.308517 </td>
         </tr>
     </tbody>
 </table>
@@ -1039,38 +1039,38 @@ Standardizing:  Blood Urea
     </thead>
     <tbody>
         <tr>
-            <td>1    </td> <td>1      </td> <td>55  </td> <td>90            </td> <td>273                 </td> <td>8.3       </td> <td>14.2            </td> <td>132   </td> <td>235       </td>
+            <td>0    </td> <td>0      </td> <td>70  </td> <td>80            </td> <td>74                  </td> <td>15.1      </td> <td>0.5             </td> <td>143   </td> <td>41        </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>63  </td> <td>100           </td> <td>280                 </td> <td>13        </td> <td>3.2             </td> <td>143   </td> <td>35        </td>
+            <td>0    </td> <td>0      </td> <td>49  </td> <td>80            </td> <td>122                 </td> <td>17        </td> <td>1.2             </td> <td>139   </td> <td>32        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>42  </td> <td>80            </td> <td>132                 </td> <td>14.4      </td> <td>0.7             </td> <td>140   </td> <td>24        </td>
+            <td>0    </td> <td>0      </td> <td>63  </td> <td>70            </td> <td>113                 </td> <td>16.5      </td> <td>0.6             </td> <td>146   </td> <td>25        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>58  </td> <td>80            </td> <td>100                 </td> <td>14        </td> <td>1.2             </td> <td>140   </td> <td>50        </td>
+            <td>0    </td> <td>0      </td> <td>56  </td> <td>60            </td> <td>132                 </td> <td>13.7      </td> <td>1.1             </td> <td>147   </td> <td>18        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>52  </td> <td>80            </td> <td>125                 </td> <td>16.5      </td> <td>1.2             </td> <td>139   </td> <td>22        </td>
+            <td>0    </td> <td>0      </td> <td>46  </td> <td>70            </td> <td>100                 </td> <td>16.4      </td> <td>0.5             </td> <td>142   </td> <td>47        </td>
         </tr>
         <tr>
-            <td>1    </td> <td>0      </td> <td>45  </td> <td>70            </td> <td>117                 </td> <td>10        </td> <td>2.2             </td> <td>136   </td> <td>52        </td>
+            <td>0    </td> <td>0      </td> <td>46  </td> <td>60            </td> <td>123                 </td> <td>15.7      </td> <td>1               </td> <td>135   </td> <td>46        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>55  </td> <td>80            </td> <td>130                 </td> <td>15.5      </td> <td>1.2             </td> <td>147   </td> <td>50        </td>
+            <td>1    </td> <td>1      </td> <td>63  </td> <td>70            </td> <td>380                 </td> <td>10.8      </td> <td>2.7             </td> <td>131   </td> <td>60        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>42  </td> <td>80            </td> <td>98                  </td> <td>13.9      </td> <td>0.5             </td> <td>140   </td> <td>20        </td>
+            <td>0    </td> <td>0      </td> <td>47  </td> <td>60            </td> <td>117                 </td> <td>13        </td> <td>1.2             </td> <td>138   </td> <td>22        </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>60  </td> <td>60            </td> <td>288                 </td> <td>7.9       </td> <td>1.7             </td> <td>130   </td> <td>36        </td>
+            <td>0    </td> <td>0      </td> <td>58  </td> <td>70            </td> <td>88                  </td> <td>16.4      </td> <td>1.1             </td> <td>147   </td> <td>16        </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>83  </td> <td>70            </td> <td>102                 </td> <td>8.7       </td> <td>2.6             </td> <td>115   </td> <td>60        </td>
+            <td>0    </td> <td>0      </td> <td>60  </td> <td>60            </td> <td>134                 </td> <td>14.2      </td> <td>0.5             </td> <td>139   </td> <td>45        </td>
         </tr>
     </tbody>
 </table>
-<p>... (22 rows omitted)</p></div><img alt="_images/281f2c5860e906adf61c8319b0e999e92bb57e01a865485eeae1d48050908ff7.png" src="_images/281f2c5860e906adf61c8319b0e999e92bb57e01a865485eeae1d48050908ff7.png" />
+<p>... (22 rows omitted)</p></div><img alt="_images/addd95346457a3fbafe03119a42e131eda838b4504907066a0b66c023097e309.png" src="_images/addd95346457a3fbafe03119a42e131eda838b4504907066a0b66c023097e309.png" />
 </div>
 </div>
 <p><strong><font color=blue>Interpretation: Patients with high sodium and low urea are less likely to be predicted to have CKD</strong></p>
@@ -1111,12 +1111,12 @@ Standardizing:  Blood Urea
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="bootstrap.html"
+       href="Regression_bootstrap_CI.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Bootstrap</p>
+        <p class="prev-next-title">Regression and Bootstrap Confidence Intervals</p>
       </div>
     </a>
     <a class="right-next"
