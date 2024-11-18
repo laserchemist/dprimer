@@ -10,7 +10,7 @@ chapters:
 - file: arrays
 - file: Tables
 - file: Function_examples
-- file: bootstrap
+- file: Regression_bootstrap_CI
 - file: k-Nearest_Neighbors_classification
 - file: k-Nearest_Neighbors_multiple_regression
 - file: string_to_number
