@@ -418,18 +418,18 @@ document.write(`
 <p>The training examines the characteristics of <em>k</em> nearest neighbors to the data point for which a prediction will be made. Nearness is measured using several different <a class="reference external" href="https://www.nhm.uio.no/english/research/infrastructure/past/help/similarity.html">metrics</a> with Euclidean distance being a common one for numerical attributes.<br />
 Euclidean distance:<br />
 1-D:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fee2b133-0fce-4747-85b1-016c2cb9c6ac">
-<span class="eqno">(1)<a class="headerlink" href="#equation-fee2b133-0fce-4747-85b1-016c2cb9c6ac" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-ff5f362b-02f5-4a15-b86a-01a9191695f0">
+<span class="eqno">(1)<a class="headerlink" href="#equation-ff5f362b-02f5-4a15-b86a-01a9191695f0" title="Permalink to this equation">#</a></span>\[\begin{align} 
 d(p,q) = \sqrt{(p-q)^{2}} 
 \end{align}\]</div>
 <p>2-D:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8648e3ab-8626-4cce-ad8e-593d4b889fc1">
-<span class="eqno">(2)<a class="headerlink" href="#equation-8648e3ab-8626-4cce-ad8e-593d4b889fc1" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-ed705a78-204f-4a62-9bad-ea9d3e4f1047">
+<span class="eqno">(2)<a class="headerlink" href="#equation-ed705a78-204f-4a62-9bad-ea9d3e4f1047" title="Permalink to this equation">#</a></span>\[\begin{align} 
  d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}} 
 \end{align}\]</div>
 <p>For multiple points (rows, multidimensional):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5f1001fa-7990-4ca6-a29e-e2e8af28bf87">
-<span class="eqno">(3)<a class="headerlink" href="#equation-5f1001fa-7990-4ca6-a29e-e2e8af28bf87" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-5cbe764c-49fe-444c-a8e8-0e0a336cf317">
+<span class="eqno">(3)<a class="headerlink" href="#equation-5cbe764c-49fe-444c-a8e8-0e0a336cf317" title="Permalink to this equation">#</a></span>\[\begin{align} 
  d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}} 
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -695,13 +695,13 @@ Standardizing:  Serum Creatinine
     </thead>
     <tbody>
         <tr>
-            <td>1    </td> <td>-0.363613     </td> <td>-0.85491            </td> <td>-2.29279  </td> <td>4.176           </td>
+            <td>0    </td> <td>-1.26128      </td> <td>-0.128862           </td> <td>0.700526  </td> <td>-0.387439       </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0.534056      </td> <td>0.025616            </td> <td>0.387272  </td> <td>-0.322247       </td>
+            <td>0    </td> <td>0.534056      </td> <td>-0.159758           </td> <td>0.456884  </td> <td>-0.322247       </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0.534056      </td> <td>0.025616            </td> <td>-0.169624 </td> <td>-0.322247       </td>
+            <td>0    </td> <td>-1.26128      </td> <td>-0.345132           </td> <td>0.456884  </td> <td>-0.420035       </td>
         </tr>
     </tbody>
 </table>
@@ -715,9 +715,9 @@ Standardizing:  Serum Creatinine
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicting target value, Class, for row = 16 using k=8 with features: [&#39;Blood Pressure&#39;, &#39;Blood Glucose Random&#39;, &#39;Hemoglobin&#39;, &#39;Serum Creatinine&#39;]
-Actual classification: 1
+Actual classification: 0
 Predicted classification: 0
-Closest classifications: [1, 1, 0, 1, 0, 0, 0, 0]
+Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
@@ -740,7 +740,7 @@ Closest classifications: [1, 1, 0, 1, 0, 0, 0, 0]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 93.8%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 96.9%
 </pre></div>
 </div>
 </div>
@@ -781,43 +781,54 @@ Closest classifications: [1, 1, 0, 1, 0, 0, 0, 0]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_relate</span><span class="p">(</span><span class="n">CKD</span><span class="p">,</span> <span class="n">testK</span><span class="p">,</span> <span class="n">predict_list</span><span class="p">,</span> <span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Blood Pressure&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_relate</span><span class="p">(</span><span class="n">CKD</span><span class="p">,</span> <span class="n">testK</span><span class="p">,</span> <span class="n">predict_list</span><span class="p">,</span> <span class="s2">&quot;Blood Glucose Random&quot;</span><span class="p">,</span> <span class="s2">&quot;Hemoglobin&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2032</span><span class="o">/</span><span class="mf">1233680127.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_relate</span><span class="p">(</span><span class="n">CKD</span><span class="p">,</span> <span class="n">testK</span><span class="p">,</span> <span class="n">predict_list</span><span class="p">,</span> <span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Blood Pressure&quot;</span><span class="p">)</span>
-
-<span class="nn">/tmp/ipykernel_2032/1025432811.py</span> in <span class="ni">plot_relate</span><span class="nt">(tbl, test, predict_list, labelx, labely)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">x</span> <span class="o">=</span> <span class="n">original_val</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="n">label</span><span class="p">],</span><span class="n">xmean</span><span class="p">,</span><span class="n">xstd</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>         <span class="n">testvals</span><span class="o">=</span><span class="n">testvals</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">9</span>     <span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">testvals</span><span class="p">[</span><span class="n">labelx</span><span class="p">],</span><span class="n">testvals</span><span class="p">[</span><span class="n">labely</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">testvals</span><span class="p">[</span><span class="s1">&#39;predict&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">labelx</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">labely</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/datascience/tables.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, index_or_label)</span>
-<span class="g g-Whitespace">    </span><span class="mi">259</span> 
-<span class="g g-Whitespace">    </span><span class="mi">260</span>     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index_or_label</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">261</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">index_or_label</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">262</span> 
-<span class="g g-Whitespace">    </span><span class="mi">263</span>     <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index_or_label</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/datascience/tables.py</span> in <span class="ni">column</span><span class="nt">(self, index_or_label)</span>
-<span class="g g-Whitespace">    </span><span class="mi">409</span>                 <span class="s1">&#39;The column &quot;</span><span class="si">{}</span><span class="s1">&quot; is not in the table. The table contains &#39;</span>
-<span class="g g-Whitespace">    </span><span class="mi">410</span>                 <span class="s1">&#39;these columns: </span><span class="si">{}</span><span class="s1">&#39;</span>
-<span class="ne">--&gt; </span><span class="mi">411</span>                 <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index_or_label</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">412</span>             <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">413</span>         <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">index_or_label</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
-
-<span class="ne">ValueError</span>: The column &quot;Age&quot; is not in the table. The table contains these columns: Class, predict, Blood Pressure, Blood Glucose Random, Hemoglobin, Serum Creatinine
-</pre></div>
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Class</th> <th>predict</th> <th>Blood Pressure</th> <th>Blood Glucose Random</th> <th>Hemoglobin</th> <th>Serum Creatinine</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>105                 </td> <td>14.7      </td> <td>0.5             </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>1      </td> <td>100           </td> <td>255                 </td> <td>7.3       </td> <td>12.8            </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>78                  </td> <td>16.1      </td> <td>0.6             </td>
+        </tr>
+        <tr>
+            <td>1    </td> <td>1      </td> <td>90            </td> <td>70                  </td> <td>9.5       </td> <td>7.2             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>91                  </td> <td>13.5      </td> <td>1.2             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>102                 </td> <td>14.6      </td> <td>0.4             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>99                  </td> <td>13        </td> <td>0.8             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>70            </td> <td>100                 </td> <td>14.3      </td> <td>1.1             </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>70            </td> <td>123                 </td> <td>14.6      </td> <td>1               </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>133                 </td> <td>14.8      </td> <td>1.2             </td>
+        </tr>
+    </tbody>
+</table>
+<p>... (22 rows omitted)</p></div><img alt="_images/314c2c80941c72529a07196a64d54baeb2bbdb9d4de96e4905020f5389bc907a.png" src="_images/314c2c80941c72529a07196a64d54baeb2bbdb9d4de96e4905020f5389bc907a.png" />
 </div>
 </div>
-</div>
-<p><strong><font color=blue>Interpretation: Older patients with high blood pressure are more likely to be predicted to have CKD</strong></p>
+<p><strong><font color=blue>Interpretation: Patients with high hemoglobin numbers and low blood glucose are less likely to be predicted to have CKD</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_relate</span><span class="p">(</span><span class="n">CKD</span><span class="p">,</span> <span class="n">testK</span><span class="p">,</span> <span class="n">predict_list</span><span class="p">,</span> <span class="s2">&quot;Blood Glucose Random&quot;</span><span class="p">,</span> <span class="s2">&quot;Serum Creatinine&quot;</span><span class="p">)</span>
@@ -828,43 +839,43 @@ Closest classifications: [1, 1, 0, 1, 0, 0, 0, 0]
 <div class="output text_html"><table border="1" class="dataframe">
     <thead>
         <tr>
-            <th>Class</th> <th>predict</th> <th>Age</th> <th>Blood Pressure</th> <th>Blood Glucose Random</th> <th>Hemoglobin</th> <th>Serum Creatinine</th>
+            <th>Class</th> <th>predict</th> <th>Blood Pressure</th> <th>Blood Glucose Random</th> <th>Hemoglobin</th> <th>Serum Creatinine</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>1    </td> <td>0      </td> <td>48  </td> <td>70            </td> <td>117                 </td> <td>11.2      </td> <td>3.8             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>105                 </td> <td>14.7      </td> <td>0.5             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>38  </td> <td>80            </td> <td>99                  </td> <td>13.6      </td> <td>0.5             </td>
+            <td>1    </td> <td>1      </td> <td>100           </td> <td>255                 </td> <td>7.3       </td> <td>12.8            </td>
         </tr>
         <tr>
-            <td>1    </td> <td>0      </td> <td>45  </td> <td>70            </td> <td>117                 </td> <td>10        </td> <td>2.2             </td>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>78                  </td> <td>16.1      </td> <td>0.6             </td>
         </tr>
         <tr>
-            <td>1    </td> <td>0      </td> <td>21  </td> <td>90            </td> <td>107                 </td> <td>8.3       </td> <td>1.7             </td>
+            <td>1    </td> <td>1      </td> <td>90            </td> <td>70                  </td> <td>9.5       </td> <td>7.2             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>66  </td> <td>70            </td> <td>107                 </td> <td>13.6      </td> <td>1.1             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>91                  </td> <td>13.5      </td> <td>1.2             </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>55  </td> <td>90            </td> <td>273                 </td> <td>8.3       </td> <td>14.2            </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>102                 </td> <td>14.6      </td> <td>0.4             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>32  </td> <td>70            </td> <td>100                 </td> <td>14.3      </td> <td>1.1             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>99                  </td> <td>13        </td> <td>0.8             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>41  </td> <td>70            </td> <td>125                 </td> <td>16.8      </td> <td>0.6             </td>
+            <td>0    </td> <td>0      </td> <td>70            </td> <td>100                 </td> <td>14.3      </td> <td>1.1             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>30  </td> <td>80            </td> <td>131                 </td> <td>14.1      </td> <td>1               </td>
+            <td>0    </td> <td>0      </td> <td>70            </td> <td>123                 </td> <td>14.6      </td> <td>1               </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>38  </td> <td>60            </td> <td>91                  </td> <td>14        </td> <td>0.7             </td>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>133                 </td> <td>14.8      </td> <td>1.2             </td>
         </tr>
     </tbody>
 </table>
-<p>... (22 rows omitted)</p></div><img alt="_images/9300fb21d8d176973806c9e0d30db114ff66f5f15fa183d55d4e5e09b02187b9.png" src="_images/9300fb21d8d176973806c9e0d30db114ff66f5f15fa183d55d4e5e09b02187b9.png" />
+<p>... (22 rows omitted)</p></div><img alt="_images/e8ba0451273a83c44ac875bcb888870c4f19cacf33ecc542ddb1b4b232c25ede.png" src="_images/e8ba0451273a83c44ac875bcb888870c4f19cacf33ecc542ddb1b4b232c25ede.png" />
 </div>
 </div>
 <p><strong><font color=blue>Interpretation: Patients with low creatinine and blood glucose are less likely to be predicted to have CKD</strong></p>
@@ -879,11 +890,7 @@ Closest classifications: [1, 1, 0, 1, 0, 0, 0, 0]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Age&#39;,
- &#39;Blood Pressure&#39;,
- &#39;Blood Glucose Random&#39;,
- &#39;Hemoglobin&#39;,
- &#39;Serum Creatinine&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Blood Pressure&#39;, &#39;Blood Glucose Random&#39;, &#39;Hemoglobin&#39;, &#39;Serum Creatinine&#39;]
 </pre></div>
 </div>
 </div>
@@ -984,13 +991,13 @@ Standardizing:  Blood Urea
     </thead>
     <tbody>
         <tr>
-            <td>0    </td> <td>-0.295109</td> <td>0.534056      </td> <td>-0.762223           </td> <td>0.770138  </td> <td>-0.517823       </td> <td>1.09192  </td> <td>-0.0756892</td>
-        </tr>
-        <tr>
-            <td>1    </td> <td>0.610274 </td> <td>2.3294        </td> <td>1.91025             </td> <td>-2.22318  </td> <td>3.45889         </td> <td>-0.515439</td> <td>1.6811    </td>
+            <td>1    </td> <td>-0.101098</td> <td>-0.363613     </td> <td>-0.221549           </td> <td>-0.865744 </td> <td>0.52525         </td> <td>-3.73015 </td> <td>0.0724741 </td>
         </tr>
         <tr>
             <td>0    </td> <td>0.028242 </td> <td>0.534056      </td> <td>0.0874074           </td> <td>0.14363   </td> <td>-0.452631       </td> <td>0.0203463</td> <td>-0.139188 </td>
+        </tr>
+        <tr>
+            <td>0    </td> <td>0.545603 </td> <td>-0.363613     </td> <td>-0.453267           </td> <td>0.456884  </td> <td>-0.322247       </td> <td>0.0203463</td> <td>-0.0968554</td>
         </tr>
     </tbody>
 </table>
@@ -1002,15 +1009,17 @@ Standardizing:  Blood Urea
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">predict_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">testK</span><span class="o">.</span><span class="n">num_rows</span><span class="p">):</span>
     <span class="n">predict</span> <span class="o">=</span> <span class="n">predict_knn_class</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">trainK</span><span class="p">,</span> <span class="n">testK</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">predict_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">predict</span><span class="p">)</span>
     <span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="n">predict</span> <span class="o">==</span> <span class="n">testK</span><span class="p">[</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Percent correct: </span><span class="si">{</span><span class="n">correct</span><span class="o">/</span><span class="n">testK</span><span class="o">.</span><span class="n">num_rows</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 100.0%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 96.9%
 </pre></div>
 </div>
 </div>
@@ -1030,41 +1039,41 @@ Standardizing:  Blood Urea
     </thead>
     <tbody>
         <tr>
-            <td>0    </td> <td>0      </td> <td>34  </td> <td>70            </td> <td>87                  </td> <td>17.1      </td> <td>0.5             </td> <td>144   </td> <td>38        </td>
+            <td>1    </td> <td>1      </td> <td>55  </td> <td>90            </td> <td>273                 </td> <td>8.3       </td> <td>14.2            </td> <td>132   </td> <td>235       </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>63  </td> <td>70            </td> <td>113                 </td> <td>16.5      </td> <td>0.6             </td> <td>146   </td> <td>25        </td>
+            <td>1    </td> <td>1      </td> <td>63  </td> <td>100           </td> <td>280                 </td> <td>13        </td> <td>3.2             </td> <td>143   </td> <td>35        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>47  </td> <td>60            </td> <td>137                 </td> <td>13.6      </td> <td>0.5             </td> <td>150   </td> <td>17        </td>
+            <td>0    </td> <td>0      </td> <td>42  </td> <td>80            </td> <td>132                 </td> <td>14.4      </td> <td>0.7             </td> <td>140   </td> <td>24        </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>63  </td> <td>70            </td> <td>380                 </td> <td>10.8      </td> <td>2.7             </td> <td>131   </td> <td>60        </td>
+            <td>0    </td> <td>0      </td> <td>58  </td> <td>80            </td> <td>100                 </td> <td>14        </td> <td>1.2             </td> <td>140   </td> <td>50        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>49  </td> <td>80            </td> <td>122                 </td> <td>17        </td> <td>1.2             </td> <td>139   </td> <td>32        </td>
+            <td>0    </td> <td>0      </td> <td>52  </td> <td>80            </td> <td>125                 </td> <td>16.5      </td> <td>1.2             </td> <td>139   </td> <td>22        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>58  </td> <td>70            </td> <td>88                  </td> <td>16.4      </td> <td>1.1             </td> <td>147   </td> <td>16        </td>
+            <td>1    </td> <td>0      </td> <td>45  </td> <td>70            </td> <td>117                 </td> <td>10        </td> <td>2.2             </td> <td>136   </td> <td>52        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>33  </td> <td>80            </td> <td>100                 </td> <td>16.9      </td> <td>1.2             </td> <td>142   </td> <td>37        </td>
+            <td>0    </td> <td>0      </td> <td>55  </td> <td>80            </td> <td>130                 </td> <td>15.5      </td> <td>1.2             </td> <td>147   </td> <td>50        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>47  </td> <td>80            </td> <td>124                 </td> <td>14.9      </td> <td>1               </td> <td>140   </td> <td>44        </td>
+            <td>0    </td> <td>0      </td> <td>42  </td> <td>80            </td> <td>98                  </td> <td>13.9      </td> <td>0.5             </td> <td>140   </td> <td>20        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>29  </td> <td>80            </td> <td>70                  </td> <td>13.7      </td> <td>0.7             </td> <td>138   </td> <td>16        </td>
+            <td>1    </td> <td>1      </td> <td>60  </td> <td>60            </td> <td>288                 </td> <td>7.9       </td> <td>1.7             </td> <td>130   </td> <td>36        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>44  </td> <td>70            </td> <td>92                  </td> <td>14        </td> <td>0.9             </td> <td>141   </td> <td>40        </td>
+            <td>1    </td> <td>1      </td> <td>83  </td> <td>70            </td> <td>102                 </td> <td>8.7       </td> <td>2.6             </td> <td>115   </td> <td>60        </td>
         </tr>
     </tbody>
 </table>
-<p>... (22 rows omitted)</p></div><img alt="_images/d9b75837dd3308168b1745fda3ea24d2df0ffcab987dc5f6e32e3e926f807277.png" src="_images/d9b75837dd3308168b1745fda3ea24d2df0ffcab987dc5f6e32e3e926f807277.png" />
+<p>... (22 rows omitted)</p></div><img alt="_images/281f2c5860e906adf61c8319b0e999e92bb57e01a865485eeae1d48050908ff7.png" src="_images/281f2c5860e906adf61c8319b0e999e92bb57e01a865485eeae1d48050908ff7.png" />
 </div>
 </div>
-<p><strong><font color=blue>Interpretation: Patients with high sodium and low urea are likely to be predicted to have CKD</strong></p>
+<p><strong><font color=blue>Interpretation: Patients with high sodium and low urea are less likely to be predicted to have CKD</strong></p>
 <p><strong><font color=green>Improved…</strong></p>
 </section>
 </section>

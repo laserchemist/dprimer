@@ -421,18 +421,18 @@ document.write(`
 <h2>Nearest neighbor concept<a id='NNconcept'></a><a class="headerlink" href="#nearest-neighbor-concept-a-id-nnconcept-a" title="Permalink to this heading">#</a></h2>
 <p>The training examines the characteristics of <em>k</em> nearest neighbors to the data point for which a prediction will be made. Nearness is measured using several different <a class="reference external" href="https://www.nhm.uio.no/english/research/infrastructure/past/help/similarity.html">metrics</a> with Euclidean distance being a common one for numerical attributes.<br />
 Euclidean distance:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3cfeda25-9588-401d-805f-0884abcfee4a">
-<span class="eqno">(4)<a class="headerlink" href="#equation-3cfeda25-9588-401d-805f-0884abcfee4a" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-5b11ff62-3475-423a-8c90-aa2b4494052d">
+<span class="eqno">(4)<a class="headerlink" href="#equation-5b11ff62-3475-423a-8c90-aa2b4494052d" title="Permalink to this equation">#</a></span>\[\begin{align} 
 d(p,q) = \sqrt{(p-q)^{2}} 
 \label{eq:distance_1D} \tag{1}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-5efb48de-692c-43f1-93f7-55288af21861">
-<span class="eqno">(5)<a class="headerlink" href="#equation-5efb48de-692c-43f1-93f7-55288af21861" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-fa330e7d-01c8-474b-8f28-e955e82cab69">
+<span class="eqno">(5)<a class="headerlink" href="#equation-fa330e7d-01c8-474b-8f28-e955e82cab69" title="Permalink to this equation">#</a></span>\[\begin{align} 
  d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}} 
  \label{eq:distance_2D} \tag{2}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-0a73618c-29c7-4b38-a5fb-a818613da6e0">
-<span class="eqno">(6)<a class="headerlink" href="#equation-0a73618c-29c7-4b38-a5fb-a818613da6e0" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-654261c7-adc7-45df-978e-8d92c9337816">
+<span class="eqno">(6)<a class="headerlink" href="#equation-654261c7-adc7-45df-978e-8d92c9337816" title="Permalink to this equation">#</a></span>\[\begin{align} 
  d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}} 
   \label{eq:distance_multiD} \tag{3}
 \end{align}\]</div>
@@ -710,13 +710,13 @@ Standardizing:  TotRms AbvGrd
     </thead>
     <tbody>
         <tr>
-            <td>139000   </td> <td>-1.2724   </td> <td>0.784028 </td> <td>0.591946  </td> <td>0.990018     </td>
+            <td>220000   </td> <td>0.506458  </td> <td>-1.02479 </td> <td>-0.783185 </td> <td>-0.917535    </td>
         </tr>
         <tr>
-            <td>372402   </td> <td>1.40482   </td> <td>0.784028 </td> <td>-0.783185 </td> <td>-0.281684    </td>
+            <td>222000   </td> <td>1.44565   </td> <td>0.784028 </td> <td>-0.783185 </td> <td>-0.281684    </td>
         </tr>
         <tr>
-            <td>139000   </td> <td>-0.491439 </td> <td>0.784028 </td> <td>0.783391  </td> <td>-0.281684    </td>
+            <td>161750   </td> <td>-1.20094  </td> <td>-1.02479 </td> <td>0.858101  </td> <td>-0.281684    </td>
         </tr>
     </tbody>
 </table>
@@ -730,12 +730,12 @@ Standardizing:  TotRms AbvGrd
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicting target value, SalePrice, for row = 16 using k=8 with features: [&#39;1st Flr SF&#39;, &#39;Full Bath&#39;, &#39;2nd Flr SF&#39;, &#39;TotRms AbvGrd&#39;]
-Actual value: 135000.00
-Predicted value: 136962.50
-Closest neighbor values: [133000 110500 127000 145000 140000 125200 155000 160000]
+Actual value: 378500.00
+Predicted value: 221045.12
+Closest neighbor values: [144000 156500 157000 130000 141000 402861 395000 242000]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>136962.5
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>221045.125
 </pre></div>
 </div>
 </div>
@@ -761,64 +761,8 @@ Closest neighbor values: [133000 110500 127000 145000 140000 125200 155000 16000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/datascience/tables.py</span> in <span class="ni">__getattr__</span><span class="nt">(self, column_label)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5695</span>             <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">5696</span>                 <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="o">.</span><span class="n">column_index</span><span class="p">(</span><span class="n">column_label</span><span class="p">)]</span>
-<span class="g g-Whitespace">   </span><span class="mi">5697</span>             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span> <span class="c1">#adding support for NumPy v1.18.0 as per changes in https://github.com/numpy/numpy/pull/14745</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/datascience/tables.py</span> in <span class="ni">column_index</span><span class="nt">(self, label)</span>
-<span class="g g-Whitespace">    </span><span class="mi">474</span><span class="w">         </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">475</span><span class="sd">         return self.labels.index(label)</span>
-<span class="g g-Whitespace">    </span><span class="mi">476</span><span class="sd"> </span>
-
-<span class="ne">ValueError</span>: tuple.index(x): x not in tuple
-
-<span class="sd">During handling of the above exception, another exception occurred:</span>
-
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="sd">/tmp/ipykernel_2054/2048335179.py in &lt;module&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="sd"> error = []</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> for i in np.arange(testH.num_rows):</span>
-<span class="ne">----&gt; </span><span class="mi">3</span><span class="sd">     predict = predict_knn(i, trainH, testH, k=8, pr=False)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd">     error.append( predict - testH[target[0]][0])</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span><span class="sd"> print(f&#39;Mean signed error: {np.mean(np.array(error)):.2f}&#39;)</span>
-
-<span class="nn">/tmp/ipykernel_2054/3257612327.py</span> in <span class="ni">predict_knn</span><span class="nt">(row, train, test, k, pr)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd">     &quot;&quot;&quot;</span><span class="n">Return</span> <span class="n">the</span> <span class="n">predicting</span> <span class="n">value</span> <span class="ow">or</span> <span class="k">class</span> <span class="nc">among</span> <span class="n">the</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span>      <span class="n">k</span> <span class="n">nearest</span> <span class="n">neighbors</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="mi">1</span> <span class="n">prints</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">4</span><span class="s2">     predict = np.average(closest(train, test.select(features).row(row), k , target, features).column(target[0]))</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span><span class="s2">     if pr:</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span><span class="s2">             print(f&#39;Predicting target value, </span><span class="si">{target[0]}</span><span class="s2">, for row = </span><span class="si">{row}</span><span class="s2"> using k=</span><span class="si">{k}</span><span class="s2"> with features: </span><span class="si">{features}</span><span class="s2">&#39;)</span>
-
-<span class="nn">/tmp/ipykernel_2054/379526015.py</span> in <span class="ni">closest</span><span class="nt">(training, test, k, target, features)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span><span class="s2"> def closest(training, test, k, target, features):</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span><span class="s2">     &quot;&quot;&quot;</span><span class="n">Return</span> <span class="n">a</span> <span class="n">table</span> <span class="n">of</span> <span class="n">the</span> <span class="n">k</span> <span class="n">closest</span> <span class="n">neighbors</span> <span class="n">to</span> <span class="n">example</span> <span class="n">row</span> <span class="kn">from</span> <span class="nn">test</span> <span class="n">data</span><span class="o">.</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">15</span><span class="s2">     return distances(training, test, target, features).sort(&#39;Distance&#39;).take(np.arange(k))</span>
-
-<span class="nn">/tmp/ipykernel_2054/379526015.py</span> in <span class="ni">distances</span><span class="nt">(training, test, target, features)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="s2">     attributes = training.select(features)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="s2">     for row in attributes.rows:</span>
-<span class="ne">---&gt; </span><span class="mi">10</span><span class="s2">         dists.append(row_distance(row, test))</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span><span class="s2">     return training.with_column(&#39;Distance&#39;, dists)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span><span class="s2"> </span>
-
-<span class="nn">/tmp/ipykernel_2054/379526015.py</span> in <span class="ni">row_distance</span><span class="nt">(row1, row2)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="s2"> def row_distance(row1, row2):</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="s2">     &quot;&quot;&quot;</span><span class="n">The</span> <span class="n">distance</span> <span class="n">between</span> <span class="n">two</span> <span class="n">rows</span> <span class="n">of</span> <span class="n">a</span> <span class="n">table</span><span class="o">.</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">3</span><span class="s2">     return distance(np.array(row1), np.array(row2)) # Need to convert rows into arrays</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="s2"> </span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span><span class="s2"> def distances(training, test, target, features):</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/datascience/tables.py</span> in <span class="ni">__getattr__</span><span class="nt">(self, column_label)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5696</span><span class="s2">                 return self[self._table.column_index(column_label)]</span>
-<span class="g g-Whitespace">   </span><span class="mi">5697</span><span class="s2">             except ValueError: #adding support for NumPy v1.18.0 as per changes in https://github.com/numpy/numpy/pull/14745</span>
-<span class="nn">-&gt; 5698                 raise AttributeError(&quot;Attribute ({0}) not found</span> in <span class="ni">row.&quot;.format</span><span class="nt">(column_label))</span>
-<span class="g g-Whitespace">   </span><span class="mi">5699</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">5700</span><span class="s2">         def item(self, index_or_label):</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/ipykernel_launcher.py:3: DeprecationWarning: An exception was ignored while fetching the attribute `__array__` from an object of type &#39;Row&#39;.  With the exception of `AttributeError` NumPy will always raise this exception in the future.  Raise this deprecation warning to see the original exception. (Warning added NumPy 1.21)
+  This is separate from the ipykernel package so we can avoid doing imports until
 </pre></div>
 </div>
 </div>
