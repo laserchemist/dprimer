@@ -421,18 +421,18 @@ document.write(`
 <h2>Nearest neighbor concept<a id='NNconcept'></a><a class="headerlink" href="#nearest-neighbor-concept-a-id-nnconcept-a" title="Permalink to this heading">#</a></h2>
 <p>The training examines the characteristics of <em>k</em> nearest neighbors to the data point for which a prediction will be made. Nearness is measured using several different <a class="reference external" href="https://www.nhm.uio.no/english/research/infrastructure/past/help/similarity.html">metrics</a> with Euclidean distance being a common one for numerical attributes.<br />
 Euclidean distance:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ed81b40a-d9f0-4d67-9726-ee8512078c53">
-<span class="eqno">(4)<a class="headerlink" href="#equation-ed81b40a-d9f0-4d67-9726-ee8512078c53" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-59913e01-a700-4fc9-88b7-24d6bc97df96">
+<span class="eqno">(4)<a class="headerlink" href="#equation-59913e01-a700-4fc9-88b7-24d6bc97df96" title="Permalink to this equation">#</a></span>\[\begin{align} 
 d(p,q) = \sqrt{(p-q)^{2}} 
 \label{eq:distance_1D} \tag{1}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-dbb9729f-ce84-4935-9c4a-85457c49c5dc">
-<span class="eqno">(5)<a class="headerlink" href="#equation-dbb9729f-ce84-4935-9c4a-85457c49c5dc" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-d0cef73a-78a7-4db4-ad61-d718fdeaf596">
+<span class="eqno">(5)<a class="headerlink" href="#equation-d0cef73a-78a7-4db4-ad61-d718fdeaf596" title="Permalink to this equation">#</a></span>\[\begin{align} 
  d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}} 
  \label{eq:distance_2D} \tag{2}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-f459d57a-4d59-4522-b1bd-247e1de78a03">
-<span class="eqno">(6)<a class="headerlink" href="#equation-f459d57a-4d59-4522-b1bd-247e1de78a03" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-5e6ed4b8-21c6-4c9f-9044-eeab15998ead">
+<span class="eqno">(6)<a class="headerlink" href="#equation-5e6ed4b8-21c6-4c9f-9044-eeab15998ead" title="Permalink to this equation">#</a></span>\[\begin{align} 
  d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}} 
   \label{eq:distance_multiD} \tag{3}
 \end{align}\]</div>
@@ -710,13 +710,13 @@ Standardizing:  TotRms AbvGrd
     </thead>
     <tbody>
         <tr>
-            <td>160250   </td> <td>0.54474   </td> <td>-1.02479 </td> <td>-0.783185 </td> <td>-0.917535    </td>
+            <td>315000   </td> <td>1.7315    </td> <td>0.784028 </td> <td>-0.783185 </td> <td>0.990018     </td>
         </tr>
         <tr>
-            <td>198000   </td> <td>0.269106  </td> <td>0.784028 </td> <td>0.78806   </td> <td>0.354167     </td>
+            <td>134500   </td> <td>-0.40977  </td> <td>-1.02479 </td> <td>-0.783185 </td> <td>-0.281684    </td>
         </tr>
         <tr>
-            <td>132000   </td> <td>-0.478678 </td> <td>-1.02479 </td> <td>-0.783185 </td> <td>-0.917535    </td>
+            <td>117000   </td> <td>-0.448052 </td> <td>0.784028 </td> <td>0.664322  </td> <td>-0.281684    </td>
         </tr>
     </tbody>
 </table>
@@ -730,12 +730,12 @@ Standardizing:  TotRms AbvGrd
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicting target value, SalePrice, for row = 16 using k=8 with features: [&#39;1st Flr SF&#39;, &#39;Full Bath&#39;, &#39;2nd Flr SF&#39;, &#39;TotRms AbvGrd&#39;]
-Actual value: 97500.00
-Predicted value: 114812.50
-Closest neighbor values: [130000 126500 105000 117000 123000  85000 127000 105000]
+Actual value: 212900.00
+Predicted value: 222555.12
+Closest neighbor values: [192500 174000 225000 217000 201000 290941 220000 260000]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>114812.5
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>222555.125
 </pre></div>
 </div>
 </div>
@@ -754,7 +754,7 @@ Closest neighbor values: [130000 126500 105000 117000 123000  85000 127000 10500
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">error</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">testH</span><span class="o">.</span><span class="n">num_rows</span><span class="p">):</span>
     <span class="n">predict</span> <span class="o">=</span> <span class="n">predict_knn</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">trainH</span><span class="p">,</span> <span class="n">testH</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">error</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">predict</span> <span class="o">-</span> <span class="n">testH</span><span class="p">[</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">error</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">predict</span> <span class="o">-</span> <span class="n">testH</span><span class="p">[</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean signed error: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">error</span><span class="p">))</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Root mean squared error (RMSE): </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">error</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
@@ -763,43 +763,59 @@ Closest neighbor values: [130000 126500 105000 117000 123000  85000 127000 10500
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2090</span><span class="o">/</span><span class="mf">2048335179.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2132</span><span class="o">/</span><span class="mf">4018422607.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">error</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">testH</span><span class="o">.</span><span class="n">num_rows</span><span class="p">):</span>
 <span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">predict</span> <span class="o">=</span> <span class="n">predict_knn</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">trainH</span><span class="p">,</span> <span class="n">testH</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">error</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">predict</span> <span class="o">-</span> <span class="n">testH</span><span class="p">[</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="mi">0</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">error</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">predict</span> <span class="o">-</span> <span class="n">testH</span><span class="p">[</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">])</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean signed error: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">error</span><span class="p">))</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="nn">/tmp/ipykernel_2090/3257612327.py</span> in <span class="ni">predict_knn</span><span class="nt">(row, train, test, k, pr)</span>
+<span class="nn">/tmp/ipykernel_2132/3257612327.py</span> in <span class="ni">predict_knn</span><span class="nt">(row, train, test, k, pr)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return the predicting value or class among the </span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd">      k nearest neighbors, pr=1 prints&quot;&quot;&quot;</span>
 <span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">predict</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">closest</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">features</span><span class="p">)</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">k</span> <span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">if</span> <span class="n">pr</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span>             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Predicting target value, </span><span class="si">{</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">, for row = </span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s1"> using k=</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1"> with features: </span><span class="si">{</span><span class="n">features</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="nn">/tmp/ipykernel_2090/379526015.py</span> in <span class="ni">closest</span><span class="nt">(training, test, k, target, features)</span>
+<span class="nn">/tmp/ipykernel_2132/379526015.py</span> in <span class="ni">closest</span><span class="nt">(training, test, k, target, features)</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">def</span> <span class="nf">closest</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return a table of the k closest neighbors to example row from test data.&quot;&quot;&quot;</span>
 <span class="ne">---&gt; </span><span class="mi">15</span>     <span class="k">return</span> <span class="n">distances</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;Distance&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
 
-<span class="nn">/tmp/ipykernel_2090/379526015.py</span> in <span class="ni">distances</span><span class="nt">(training, test, target, features)</span>
+<span class="nn">/tmp/ipykernel_2132/379526015.py</span> in <span class="ni">distances</span><span class="nt">(training, test, target, features)</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">attributes</span> <span class="o">=</span> <span class="n">training</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">attributes</span><span class="o">.</span><span class="n">rows</span><span class="p">:</span>
 <span class="ne">---&gt; </span><span class="mi">10</span>         <span class="n">dists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row_distance</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="k">return</span> <span class="n">training</span><span class="o">.</span><span class="n">with_column</span><span class="p">(</span><span class="s1">&#39;Distance&#39;</span><span class="p">,</span> <span class="n">dists</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">12</span> 
 
-<span class="nn">/tmp/ipykernel_2090/379526015.py</span> in <span class="ni">row_distance</span><span class="nt">(row1, row2)</span>
+<span class="nn">/tmp/ipykernel_2132/379526015.py</span> in <span class="ni">row_distance</span><span class="nt">(row1, row2)</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">row_distance</span><span class="p">(</span><span class="n">row1</span><span class="p">,</span> <span class="n">row2</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;The distance between two rows of a table.&quot;&quot;&quot;</span>
 <span class="ne">----&gt; </span><span class="mi">3</span>     <span class="k">return</span> <span class="n">distance</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">row1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">row2</span><span class="p">))</span> <span class="c1"># Need to convert rows into arrays</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> 
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">def</span> <span class="nf">distances</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
 
-<span class="nn">/tmp/ipykernel_2090/4037952138.py</span> in <span class="ni">distance</span><span class="nt">(pt1, pt2)</span>
+<span class="nn">/tmp/ipykernel_2132/4037952138.py</span> in <span class="ni">distance</span><span class="nt">(pt1, pt2)</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">pt1</span><span class="p">,</span> <span class="n">pt2</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;The distance between two points, represented as arrays.&quot;&quot;&quot;</span>
 <span class="ne">----&gt; </span><span class="mi">3</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">pt2</span><span class="o">-</span><span class="n">pt1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="nn">&lt;__array_function__ internals&gt;</span> in <span class="ni">sum</span><span class="nt">(*args, **kwargs)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py</span> in <span class="ni">sum</span><span class="nt">(a, axis, dtype, out, keepdims, initial, where)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2258</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2259</span>     <span class="k">return</span> <span class="n">_wrapreduction</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="n">keepdims</span><span class="p">,</span>
+<span class="ne">-&gt; </span><span class="mi">2260</span>                           <span class="n">initial</span><span class="o">=</span><span class="n">initial</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">where</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2261</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2262</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.17/x64/lib/python3.7/site-packages/numpy/core/fromnumeric.py</span> in <span class="ni">_wrapreduction</span><span class="nt">(obj, ufunc, method, axis, dtype, out, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span>                 <span class="k">return</span> <span class="n">reduction</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">passkwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span> 
+<span class="ne">---&gt; </span><span class="mi">86</span>     <span class="k">return</span> <span class="n">ufunc</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">passkwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span> 
+<span class="g g-Whitespace">     </span><span class="mi">88</span> 
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -909,13 +925,13 @@ Standardizing:  Overall Qual
     </thead>
     <tbody>
         <tr>
-            <td>179000   </td> <td>0.082765 </td> <td>0.103216  </td> <td>-0.783185 </td> <td>2.59285  </td> <td>-0.917535    </td> <td>-0.776079   </td>
+            <td>142500   </td> <td>0.371138</td> <td>-0.0473623</td> <td>-0.783185 </td> <td>-1.02479 </td> <td>-0.281684    </td> <td>-0.0672537  </td>
         </tr>
         <tr>
-            <td>107000   </td> <td>0.021841 </td> <td>-0.830877 </td> <td>0.608289  </td> <td>0.784028 </td> <td>0.354167     </td> <td>-1.4849     </td>
+            <td>335000   </td> <td>0.933162</td> <td>1.89484   </td> <td>-0.783185 </td> <td>0.784028 </td> <td>0.354167     </td> <td>0.641571    </td>
         </tr>
         <tr>
-            <td>245350   </td> <td>0.0415144</td> <td>1.36399   </td> <td>-0.783185 </td> <td>0.784028 </td> <td>0.354167     </td> <td>1.3504      </td>
+            <td>187500   </td> <td>0.458209</td> <td>0.0700374 </td> <td>0.4542    </td> <td>0.784028 </td> <td>0.354167     </td> <td>0.641571    </td>
         </tr>
     </tbody>
 </table>
@@ -929,12 +945,12 @@ Standardizing:  Overall Qual
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicting target value, SalePrice, for row = 16 using k=8 with features: [&#39;Lot Area&#39;, &#39;1st Flr SF&#39;, &#39;2nd Flr SF&#39;, &#39;Full Bath&#39;, &#39;TotRms AbvGrd&#39;, &#39;Overall Qual&#39;]
-Actual value: 202500.00
-Predicted value: 198711.75
-Closest neighbor values: [185850 202665 217300 224000 180000 207000 193879 179000]
+Actual value: 187000.00
+Predicted value: 166862.50
+Closest neighbor values: [143000 163000 187000 180000 173000 192000 136900 160000]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>198711.75
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>166862.5
 </pre></div>
 </div>
 </div>
@@ -953,15 +969,15 @@ Closest neighbor values: [185850 202665 217300 224000 180000 207000 193879 17900
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">error</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">testH</span><span class="o">.</span><span class="n">num_rows</span><span class="p">):</span>
         <span class="n">predict</span> <span class="o">=</span> <span class="n">predict_knn</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">trainH</span><span class="p">,</span> <span class="n">testH</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">error</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">predict</span> <span class="o">-</span> <span class="n">testH</span><span class="p">[</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">error</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">predict</span> <span class="o">-</span> <span class="n">testH</span><span class="p">[</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean signed error: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">error</span><span class="p">))</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Root mean squared error (RMSE): </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">error</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean signed error: 59124.12
-Root mean squared error (RMSE): 96988.54
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean signed error: 226.88
+Root mean squared error (RMSE): 29610.18
 </pre></div>
 </div>
 </div>

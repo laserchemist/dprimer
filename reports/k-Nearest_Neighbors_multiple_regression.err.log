@@ -35,7 +35,7 @@ Here is a preview of the cell contents:
 error = []
 for i in np.arange(testH.num_rows):
     predict = predict_knn(i, trainH, testH, k=8, pr=False)
-    error.append( predict - testH[target[0]][0])
+    error.append( predict - testH[target[0]][i])
 print(f'Mean signed error: {np.mean(np.array(error)):.2f}')
 print(f'Root mean squared error (RMSE): {np.sqrt(np.mean((np.array(error))**2)):.2f}')
 -------------------
