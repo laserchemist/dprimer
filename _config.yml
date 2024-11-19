@@ -11,6 +11,7 @@ logo: logo.png
 execute:
   execute_notebooks: force
   nb_execution_timeout: 300
+  execution_timeout: 300
 
 # Define the name of the latex output file for PDF builds
 latex:
