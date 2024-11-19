@@ -418,18 +418,18 @@ document.write(`
 <p>The training examines the characteristics of <em>k</em> nearest neighbors to the data point for which a prediction will be made. Nearness is measured using several different <a class="reference external" href="https://www.nhm.uio.no/english/research/infrastructure/past/help/similarity.html">metrics</a> with Euclidean distance being a common one for numerical attributes.<br />
 Euclidean distance:<br />
 1-D:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-172a97cb-aaa8-48aa-966d-a9d8562fd17f">
-<span class="eqno">(1)<a class="headerlink" href="#equation-172a97cb-aaa8-48aa-966d-a9d8562fd17f" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-2527038b-90f4-43ff-bdb8-23030ccab509">
+<span class="eqno">(1)<a class="headerlink" href="#equation-2527038b-90f4-43ff-bdb8-23030ccab509" title="Permalink to this equation">#</a></span>\[\begin{align} 
 d(p,q) = \sqrt{(p-q)^{2}} 
 \end{align}\]</div>
 <p>2-D:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a4b00e6f-fc33-4a98-94dd-6b829b0a5e99">
-<span class="eqno">(2)<a class="headerlink" href="#equation-a4b00e6f-fc33-4a98-94dd-6b829b0a5e99" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-b4834ad4-ba5b-44e9-af93-d1b123c99d69">
+<span class="eqno">(2)<a class="headerlink" href="#equation-b4834ad4-ba5b-44e9-af93-d1b123c99d69" title="Permalink to this equation">#</a></span>\[\begin{align} 
  d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}} 
 \end{align}\]</div>
 <p>For multiple points (rows, multidimensional):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-80fe8548-e8a2-4904-8bfc-4c1f97ae79f9">
-<span class="eqno">(3)<a class="headerlink" href="#equation-80fe8548-e8a2-4904-8bfc-4c1f97ae79f9" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-4e8a4b24-cf51-4e11-ab2e-f3b06864edf6">
+<span class="eqno">(3)<a class="headerlink" href="#equation-4e8a4b24-cf51-4e11-ab2e-f3b06864edf6" title="Permalink to this equation">#</a></span>\[\begin{align} 
  d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}} 
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -695,13 +695,13 @@ Standardizing:  Serum Creatinine
     </thead>
     <tbody>
         <tr>
-            <td>1    </td> <td>0.534056      </td> <td>0.643529            </td> <td>-2.08395  </td> <td>0.557846        </td>
+            <td>1    </td> <td>-0.363613     </td> <td>-0.221549           </td> <td>-0.865744 </td> <td>0.52525         </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0.534056      </td> <td>-0.113414           </td> <td>0.422078  </td> <td>-0.387439       </td>
+            <td>0    </td> <td>0.534056      </td> <td>-0.221549           </td> <td>0.874556  </td> <td>-0.322247       </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0.534056      </td> <td>-0.00527964         </td> <td>0.282854  </td> <td>-0.550419       </td>
+            <td>0    </td> <td>-1.26128      </td> <td>-0.808567           </td> <td>1.36184   </td> <td>-0.550419       </td>
         </tr>
     </tbody>
 </table>
@@ -740,7 +740,7 @@ Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 87.5%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent correct: 93.8%
 </pre></div>
 </div>
 </div>
@@ -794,38 +794,38 @@ Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
     </thead>
     <tbody>
         <tr>
-            <td>0    </td> <td>0      </td> <td>60            </td> <td>109                 </td> <td>15.8      </td> <td>1.1             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>112                 </td> <td>14.5      </td> <td>1.2             </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>80            </td> <td>303                 </td> <td>10.4      </td> <td>1.3             </td>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>133                 </td> <td>13.2      </td> <td>1.2             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>70            </td> <td>102                 </td> <td>15        </td> <td>1.2             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>120                 </td> <td>13.4      </td> <td>0.8             </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>60            </td> <td>163                 </td> <td>9.8       </td> <td>3.3             </td>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>119                 </td> <td>13.9      </td> <td>0.7             </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>100           </td> <td>163                 </td> <td>7.9       </td> <td>7.2             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>97                  </td> <td>13.5      </td> <td>1.2             </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>80            </td> <td>133                 </td> <td>10.3      </td> <td>8.5             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>123                 </td> <td>15.7      </td> <td>1               </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>70            </td> <td>81                  </td> <td>14.7      </td> <td>0.8             </td>
+            <td>1    </td> <td>1      </td> <td>60            </td> <td>239                 </td> <td>9.5       </td> <td>4.3             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>80            </td> <td>100                 </td> <td>15.8      </td> <td>0.6             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>111                 </td> <td>16.2      </td> <td>0.8             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>80            </td> <td>121                 </td> <td>15        </td> <td>1.2             </td>
+            <td>1    </td> <td>1      </td> <td>60            </td> <td>288                 </td> <td>7.9       </td> <td>1.7             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>80            </td> <td>98                  </td> <td>13.9      </td> <td>0.5             </td>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>112                 </td> <td>17        </td> <td>0.7             </td>
         </tr>
     </tbody>
 </table>
-<p>... (22 rows omitted)</p></div><img alt="_images/fc65bd3c939cabfc5f5989a4b3612fefc198ebffbec6ab6e4a4734ed29da4fbc.png" src="_images/fc65bd3c939cabfc5f5989a4b3612fefc198ebffbec6ab6e4a4734ed29da4fbc.png" />
+<p>... (22 rows omitted)</p></div><img alt="_images/736cb44a0eb1ab014a68d701dab6e71af4a007f3e32d1c3e5c9f1185983ece97.png" src="_images/736cb44a0eb1ab014a68d701dab6e71af4a007f3e32d1c3e5c9f1185983ece97.png" />
 </div>
 </div>
 <p><strong><font color=blue>Interpretation: Patients with high hemoglobin numbers and low blood glucose are less likely to be predicted to have CKD</strong></p>
@@ -844,38 +844,38 @@ Closest classifications: [0, 0, 0, 0, 0, 0, 0, 0]
     </thead>
     <tbody>
         <tr>
-            <td>0    </td> <td>0      </td> <td>60            </td> <td>109                 </td> <td>15.8      </td> <td>1.1             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>112                 </td> <td>14.5      </td> <td>1.2             </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>80            </td> <td>303                 </td> <td>10.4      </td> <td>1.3             </td>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>133                 </td> <td>13.2      </td> <td>1.2             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>70            </td> <td>102                 </td> <td>15        </td> <td>1.2             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>120                 </td> <td>13.4      </td> <td>0.8             </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>60            </td> <td>163                 </td> <td>9.8       </td> <td>3.3             </td>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>119                 </td> <td>13.9      </td> <td>0.7             </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>100           </td> <td>163                 </td> <td>7.9       </td> <td>7.2             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>97                  </td> <td>13.5      </td> <td>1.2             </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>80            </td> <td>133                 </td> <td>10.3      </td> <td>8.5             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>123                 </td> <td>15.7      </td> <td>1               </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>70            </td> <td>81                  </td> <td>14.7      </td> <td>0.8             </td>
+            <td>1    </td> <td>1      </td> <td>60            </td> <td>239                 </td> <td>9.5       </td> <td>4.3             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>80            </td> <td>100                 </td> <td>15.8      </td> <td>0.6             </td>
+            <td>0    </td> <td>0      </td> <td>60            </td> <td>111                 </td> <td>16.2      </td> <td>0.8             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>80            </td> <td>121                 </td> <td>15        </td> <td>1.2             </td>
+            <td>1    </td> <td>1      </td> <td>60            </td> <td>288                 </td> <td>7.9       </td> <td>1.7             </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>80            </td> <td>98                  </td> <td>13.9      </td> <td>0.5             </td>
+            <td>0    </td> <td>0      </td> <td>80            </td> <td>112                 </td> <td>17        </td> <td>0.7             </td>
         </tr>
     </tbody>
 </table>
-<p>... (22 rows omitted)</p></div><img alt="_images/af3aac0f94783a8a8751bd0ca7b1ce2eb730cef17b3b0c199bfcd7ca6d632bdb.png" src="_images/af3aac0f94783a8a8751bd0ca7b1ce2eb730cef17b3b0c199bfcd7ca6d632bdb.png" />
+<p>... (22 rows omitted)</p></div><img alt="_images/d72bac4d38e386faf5c8d89adffc363009367cc1b80aad6a91037b44c8661ee0.png" src="_images/d72bac4d38e386faf5c8d89adffc363009367cc1b80aad6a91037b44c8661ee0.png" />
 </div>
 </div>
 <p><strong><font color=blue>Interpretation: Patients with low creatinine and blood glucose are less likely to be predicted to have CKD</strong></p>
@@ -991,13 +991,13 @@ Standardizing:  Blood Urea
     </thead>
     <tbody>
         <tr>
-            <td>0    </td> <td>-1.26516</td> <td>0.534056      </td> <td>-0.654089           </td> <td>1.04859   </td> <td>-0.550419       </td> <td>0.0203463</td> <td>-0.223853 </td>
+            <td>0    </td> <td>0.480933 </td> <td>-1.26128      </td> <td>-0.406923           </td> <td>0.700526  </td> <td>-0.322247       </td> <td>1.49375  </td> <td>-0.0756892</td>
         </tr>
         <tr>
-            <td>0    </td> <td>1.06296 </td> <td>-0.363613     </td> <td>-0.376028           </td> <td>-0.0304002</td> <td>-0.354843       </td> <td>0.154292 </td> <td>-0.774173 </td>
+            <td>1    </td> <td>-0.101098</td> <td>-0.363613     </td> <td>-0.221549           </td> <td>-0.865744 </td> <td>0.52525         </td> <td>-3.73015 </td> <td>0.0724741 </td>
         </tr>
         <tr>
-            <td>0    </td> <td>1.90368 </td> <td>0.534056      </td> <td>-0.314236           </td> <td>0.909362  </td> <td>-0.322247       </td> <td>0.95797  </td> <td>-0.18152  </td>
+            <td>0    </td> <td>0.674944 </td> <td>-1.26128      </td> <td>0.0410639           </td> <td>0.178436  </td> <td>-0.550419       </td> <td>0.0203463</td> <td>-0.160354 </td>
         </tr>
     </tbody>
 </table>
@@ -1039,38 +1039,38 @@ Standardizing:  Blood Urea
     </thead>
     <tbody>
         <tr>
-            <td>1    </td> <td>1      </td> <td>60  </td> <td>90            </td> <td>490                 </td> <td>11.5      </td> <td>2.7             </td> <td>131   </td> <td>95        </td>
+            <td>0    </td> <td>0      </td> <td>57  </td> <td>80            </td> <td>119                 </td> <td>15.4      </td> <td>1.2             </td> <td>135   </td> <td>17        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>60  </td> <td>80            </td> <td>131                 </td> <td>14.5      </td> <td>0.5             </td> <td>146   </td> <td>10        </td>
+            <td>1    </td> <td>1      </td> <td>48  </td> <td>80            </td> <td>95                  </td> <td>9.8       </td> <td>7.7             </td> <td>136   </td> <td>163       </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>72  </td> <td>60            </td> <td>109                 </td> <td>15        </td> <td>0.9             </td> <td>150   </td> <td>26        </td>
+            <td>0    </td> <td>0      </td> <td>52  </td> <td>80            </td> <td>125                 </td> <td>16.5      </td> <td>1.2             </td> <td>139   </td> <td>22        </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>70  </td> <td>100           </td> <td>118                 </td> <td>12        </td> <td>5.3             </td> <td>136   </td> <td>125       </td>
+            <td>1    </td> <td>0      </td> <td>62  </td> <td>70            </td> <td>122                 </td> <td>12.6      </td> <td>1.7             </td> <td>136   </td> <td>42        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>44  </td> <td>70            </td> <td>92                  </td> <td>14        </td> <td>0.9             </td> <td>141   </td> <td>40        </td>
+            <td>1    </td> <td>1      </td> <td>56  </td> <td>90            </td> <td>129                 </td> <td>9.1       </td> <td>6.7             </td> <td>131   </td> <td>107       </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>34  </td> <td>60            </td> <td>91                  </td> <td>13.5      </td> <td>1.2             </td> <td>135   </td> <td>49        </td>
+            <td>0    </td> <td>0      </td> <td>41  </td> <td>80            </td> <td>122                 </td> <td>17.1      </td> <td>0.8             </td> <td>138   </td> <td>25        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>23  </td> <td>80            </td> <td>111                 </td> <td>14.3      </td> <td>1.1             </td> <td>145   </td> <td>34        </td>
+            <td>1    </td> <td>1      </td> <td>59  </td> <td>100           </td> <td>252                 </td> <td>11.2      </td> <td>3.2             </td> <td>137   </td> <td>40        </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>59  </td> <td>80            </td> <td>303                 </td> <td>10.4      </td> <td>1.3             </td> <td>122   </td> <td>35        </td>
+            <td>0    </td> <td>0      </td> <td>35  </td> <td>80            </td> <td>104                 </td> <td>16.1      </td> <td>1.2             </td> <td>135   </td> <td>31        </td>
         </tr>
         <tr>
-            <td>0    </td> <td>0      </td> <td>22  </td> <td>60            </td> <td>97                  </td> <td>13.5      </td> <td>1.2             </td> <td>138   </td> <td>18        </td>
+            <td>0    </td> <td>0      </td> <td>39  </td> <td>60            </td> <td>86                  </td> <td>13.6      </td> <td>0.6             </td> <td>150   </td> <td>37        </td>
         </tr>
         <tr>
-            <td>1    </td> <td>1      </td> <td>71  </td> <td>70            </td> <td>219                 </td> <td>10.4      </td> <td>3.6             </td> <td>133   </td> <td>82        </td>
+            <td>0    </td> <td>0      </td> <td>47  </td> <td>60            </td> <td>137                 </td> <td>13.6      </td> <td>0.5             </td> <td>150   </td> <td>17        </td>
         </tr>
     </tbody>
 </table>
-<p>... (22 rows omitted)</p></div><img alt="_images/d78c3d2a0ec228782a797735ca393d4d746da3311dc44b4b58210b4d6c67347f.png" src="_images/d78c3d2a0ec228782a797735ca393d4d746da3311dc44b4b58210b4d6c67347f.png" />
+<p>... (22 rows omitted)</p></div><img alt="_images/a8db228c089f40b8a6ae108704c04377d8e3ba6cf76a627af95033851f808d4f.png" src="_images/a8db228c089f40b8a6ae108704c04377d8e3ba6cf76a627af95033851f808d4f.png" />
 </div>
 </div>
 <p><strong><font color=blue>Interpretation: Patients with high sodium and low urea are less likely to be predicted to have CKD</strong></p>
