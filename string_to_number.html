@@ -423,12 +423,8 @@ document.write(`
 <h2>For use with Table columns or other array data<a class="headerlink" href="#for-use-with-table-columns-or-other-array-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mi">1000</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datalist</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[40000, 31000, 12000]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datascience</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -505,6 +501,55 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4010.0, 3110.0, 1250.0]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">salary</span> <span class="o">=</span> <span class="n">Table</span><span class="p">()</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">,[</span><span class="s1">&#39;Data scientist&#39;</span><span class="p">,</span><span class="s1">&#39;Chemist&#39;</span><span class="p">,</span><span class="s1">&#39;Chemist&#39;</span><span class="p">,</span><span class="s1">&#39;Biologist&#39;</span><span class="p">,</span><span class="s1">&#39;Physicist&#39;</span><span class="p">,</span><span class="s1">&#39;Finance&#39;</span><span class="p">],</span>
+                              <span class="s1">&#39;salary&#39;</span><span class="p">,[</span><span class="s1">&#39;75k&#39;</span><span class="p">,</span><span class="s1">&#39;102,500&#39;</span><span class="p">,</span><span class="s1">&#39;99k&#39;</span><span class="p">,</span><span class="s1">&#39;103k&#39;</span><span class="p">,</span><span class="s1">&#39;99,000&#39;</span><span class="p">,</span><span class="s1">&#39;34,000&#39;</span><span class="p">])</span>
+<span class="n">salary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>position</th> <th>salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Data scientist</td> <td>75k    </td>
+        </tr>
+        <tr>
+            <td>Chemist       </td> <td>102,500</td>
+        </tr>
+        <tr>
+            <td>Chemist       </td> <td>99k    </td>
+        </tr>
+        <tr>
+            <td>Biologist     </td> <td>103k   </td>
+        </tr>
+        <tr>
+            <td>Physicist     </td> <td>99,000 </td>
+        </tr>
+        <tr>
+            <td>Finance       </td> <td>34,000 </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mi">1000</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">salary</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;salary&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[75000, 102500000, 99000, 103000, 99000000, 34000000]
 </pre></div>
 </div>
 </div>

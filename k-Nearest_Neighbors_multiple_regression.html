@@ -421,18 +421,18 @@ document.write(`
 <h2>Nearest neighbor concept<a id='NNconcept'></a><a class="headerlink" href="#nearest-neighbor-concept-a-id-nnconcept-a" title="Permalink to this heading">#</a></h2>
 <p>The training examines the characteristics of <em>k</em> nearest neighbors to the data point for which a prediction will be made. Nearness is measured using several different <a class="reference external" href="https://www.nhm.uio.no/english/research/infrastructure/past/help/similarity.html">metrics</a> with Euclidean distance being a common one for numerical attributes.<br />
 Euclidean distance:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6f21d2b6-6e69-493e-b6cd-77e36e882545">
-<span class="eqno">(4)<a class="headerlink" href="#equation-6f21d2b6-6e69-493e-b6cd-77e36e882545" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-85c3406e-29cf-4a39-a76d-e8ad15e31847">
+<span class="eqno">(4)<a class="headerlink" href="#equation-85c3406e-29cf-4a39-a76d-e8ad15e31847" title="Permalink to this equation">#</a></span>\[\begin{align} 
 d(p,q) = \sqrt{(p-q)^{2}} 
 \label{eq:distance_1D} \tag{1}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-d00df5d0-7e6c-48ec-a4e0-6e057f3c0989">
-<span class="eqno">(5)<a class="headerlink" href="#equation-d00df5d0-7e6c-48ec-a4e0-6e057f3c0989" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-0b5a05e9-c8d7-4843-8dc6-bacf41c0d931">
+<span class="eqno">(5)<a class="headerlink" href="#equation-0b5a05e9-c8d7-4843-8dc6-bacf41c0d931" title="Permalink to this equation">#</a></span>\[\begin{align} 
  d(p,q) = \sqrt{(p_1-q_1)^{2}+(p_2-q_2)^{2}} 
  \label{eq:distance_2D} \tag{2}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-207e0a1b-c515-4a08-ae8e-bac71ba7918b">
-<span class="eqno">(6)<a class="headerlink" href="#equation-207e0a1b-c515-4a08-ae8e-bac71ba7918b" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-3ec079fa-5964-46b3-abdd-c68687e881f6">
+<span class="eqno">(6)<a class="headerlink" href="#equation-3ec079fa-5964-46b3-abdd-c68687e881f6" title="Permalink to this equation">#</a></span>\[\begin{align} 
  d(p_i,q_i) = \sqrt{\sum_{i}{((p_i-q_i)^{2})}} 
   \label{eq:distance_multiD} \tag{3}
 \end{align}\]</div>
@@ -710,13 +710,13 @@ Standardizing:  TotRms AbvGrd
     </thead>
     <tbody>
         <tr>
-            <td>242000   </td> <td>1.88463   </td> <td>0.784028 </td> <td>1.73828   </td> <td>2.89757      </td>
+            <td>243500   </td> <td>0.307389  </td> <td>0.784028 </td> <td>2.05346   </td> <td>1.62587      </td>
         </tr>
         <tr>
-            <td>155000   </td> <td>-0.948277 </td> <td>-1.02479 </td> <td>-0.783185 </td> <td>-2.18924     </td>
+            <td>250000   </td> <td>1.21086   </td> <td>0.784028 </td> <td>-0.783185 </td> <td>0.354167     </td>
         </tr>
         <tr>
-            <td>136500   </td> <td>0.588127  </td> <td>0.784028 </td> <td>-0.0734399</td> <td>0.354167     </td>
+            <td>132000   </td> <td>0.276763  </td> <td>-1.02479 </td> <td>-0.783185 </td> <td>0.354167     </td>
         </tr>
     </tbody>
 </table>
@@ -730,12 +730,12 @@ Standardizing:  TotRms AbvGrd
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicting target value, SalePrice, for row = 16 using k=8 with features: [&#39;1st Flr SF&#39;, &#39;Full Bath&#39;, &#39;2nd Flr SF&#39;, &#39;TotRms AbvGrd&#39;]
-Actual value: 379000.00
-Predicted value: 253362.50
-Closest neighbor values: [235000 320000 257000 341000 133900 155000 325000 260000]
+Actual value: 147110.00
+Predicted value: 151731.50
+Closest neighbor values: [148800 151000 144152 149900 151000 149500 155000 164500]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>253362.5
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>151731.5
 </pre></div>
 </div>
 </div>
@@ -761,8 +761,8 @@ Closest neighbor values: [235000 320000 257000 341000 133900 155000 325000 26000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean signed error: 752.21
-Root mean squared error (RMSE): 46326.16
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean signed error: -6495.56
+Root mean squared error (RMSE): 52968.99
 </pre></div>
 </div>
 </div>
@@ -870,13 +870,13 @@ Standardizing:  Overall Qual
     </thead>
     <tbody>
         <tr>
-            <td>113000   </td> <td>-0.722447</td> <td>-1.08099  </td> <td>0.888452  </td> <td>0.784028 </td> <td>0.990018     </td> <td>-1.4849     </td>
+            <td>150000   </td> <td>-0.374165</td> <td>-0.345966 </td> <td>0.533579  </td> <td>-1.02479 </td> <td>-0.281684    </td> <td>-0.776079   </td>
         </tr>
         <tr>
-            <td>90000    </td> <td>-0.474435</td> <td>-0.509304 </td> <td>-0.783185 </td> <td>-1.02479 </td> <td>-0.917535    </td> <td>-1.4849     </td>
+            <td>310013   </td> <td>0.262618 </td> <td>-0.522065 </td> <td>1.3764    </td> <td>0.784028 </td> <td>0.990018     </td> <td>1.3504      </td>
         </tr>
         <tr>
-            <td>316600   </td> <td>0.276579 </td> <td>0.858657  </td> <td>0.701677  </td> <td>-1.02479 </td> <td>-0.917535    </td> <td>1.3504      </td>
+            <td>85000    </td> <td>-0.959035</td> <td>-1.59142  </td> <td>0.561595  </td> <td>-1.02479 </td> <td>-1.55339     </td> <td>-0.776079   </td>
         </tr>
     </tbody>
 </table>
@@ -890,12 +890,12 @@ Standardizing:  Overall Qual
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicting target value, SalePrice, for row = 16 using k=8 with features: [&#39;Lot Area&#39;, &#39;1st Flr SF&#39;, &#39;2nd Flr SF&#39;, &#39;Full Bath&#39;, &#39;TotRms AbvGrd&#39;, &#39;Overall Qual&#39;]
-Actual value: 185000.00
-Predicted value: 242343.75
-Closest neighbor values: [250000 245000 315750 225000 226000 154000 292500 230500]
+Actual value: 87500.00
+Predicted value: 125187.50
+Closest neighbor values: [107000 135000  98000 132000 167500 174000  50000 138000]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>242343.75
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>125187.5
 </pre></div>
 </div>
 </div>
@@ -921,8 +921,8 @@ Closest neighbor values: [250000 245000 315750 225000 226000 154000 292500 23050
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean signed error: 737.18
-Root mean squared error (RMSE): 33098.39
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean signed error: -2410.57
+Root mean squared error (RMSE): 34929.69
 </pre></div>
 </div>
 </div>
