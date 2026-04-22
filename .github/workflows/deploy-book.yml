@@ -28,6 +28,10 @@ jobs:
         run: |
           pip install jupyter-book
 
+      - name: Clean any cached build
+        run: |
+          jupyter-book clean .
+
       - name: Build the book
         run: |
           jupyter-book build .
