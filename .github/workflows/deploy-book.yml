@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install jupyter-book
+          pip install jupyter-book datascience numpy matplotlib pandas scikit-learn
 
       - name: Clean any cached build
         run: |
