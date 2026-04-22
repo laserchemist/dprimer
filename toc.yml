@@ -10,7 +10,7 @@ project:
     - file: Function_examples
     - title: "Hypothesis testing: Difference of Means"
       children:
-      	- file: Wine_Hypothesis_test
+      - file: Wine_Hypothesis_test
     - file: Regression_bootstrap_CI
     - file: k-Nearest_Neighbors_classification
     - file: k-Nearest_Neighbors_multiple_regression
