@@ -10,6 +10,8 @@ chapters:
 - file: arrays
 - file: Tables
 - file: Function_examples
+- file: Wine_Hypothesis_test
+  title: Hypothesis testing: Difference of Means
 - file: Regression_bootstrap_CI
 - file: k-Nearest_Neighbors_classification
 - file: k-Nearest_Neighbors_multiple_regression
