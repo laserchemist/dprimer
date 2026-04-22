@@ -9,7 +9,8 @@ project:
   github: https://github.com/laserchemist/dprimer
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
   toc:
-    - file: intro.ipynb
+    - title: "Introduction"
+      file: intro
     - file: FirstCode
     - file: String_methods
     - file: lists
